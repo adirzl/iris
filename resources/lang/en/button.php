@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'login' => 'Login',
+    'forgot_password' => 'Forgot Password',
+    'remember_password' => 'Back to Login page',
+    'filter' => 'Filter',
+    'save' => 'Save',
+    'save_close' => 'Save & Close',
+    'reset' => 'Reset',
+    'cancel' => 'Cancel',
+    'create' => 'Create',
+    'icon_list' => 'Icon List',
+    'download' => 'Download',
+    'upload' => 'Upload',
+    'close' => 'Close',
+    'send' => 'Send',
+    'back' => 'Back',
+    'up_maintenance' => 'Turn off Maintenance',
+    'clean_log' => 'Clean Log',
+    'delete_all' => 'Delete All',
+    'delete' => 'Delete',
+    'synchronize' => 'Synchronize',
+    'export' => 'Export :label',
+];

@@ -1,0 +1,60 @@
+/* .navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    height: 10%;
+} */
+
+.login-page {
+    background-image: url(../img/wallpaper_iris.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #b1c3eb;
+    */ display: flex;
+}
+
+.loading-page {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    background: #fff;
+    top: 0;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    display: none;
+}
+
+.loading-content {
+    left: 40%;
+    top: 30%;
+    position: fixed;
+}
+
+.loading-content h4 {
+    margin-top: -30px;
+}
+
+.dropdown-notifications {
+    max-width: 600px;
+}
+
+.dropdown-notifications .dropdown-item-title {
+    overflow-wrap: break-word;
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.error-page {
+    margin-top: 15%;
+}
+
+.printable-img-area {
+    position: relative;
+    top: -18px;
+    left: 55px;
+}
+
+a.printable-img,
+a.printable-img:hover {
+    color: #000;
+}
