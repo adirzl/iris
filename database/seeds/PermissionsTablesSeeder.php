@@ -299,8 +299,6 @@ class PermissionsTablesSeeder extends Seeder
                     DB::table($this->roleHasModuleTable)->insert(['role_id' => $role->id, 'module_id' => $module['id']]);
                     $role->givePermissionTo($permissions->pluck('name')->toArray());
                 });
-<<<<<<< HEAD
-=======
             } elseif ($role->name == 'DATA CENTER') {
                 $modules->whereIn('label', ['Log', 'Log Aplikasi', 'Setting', 'Management API', 'Datasource', 'Log Transaksi', 'Sinkronisasi', 'Pegawai', 'Limit', 'Server'])
                     ->each(function ($module, $key) use ($role, $permissions) {
@@ -323,7 +321,6 @@ class PermissionsTablesSeeder extends Seeder
                         });
                         $role->givePermissionTo($permissions->pluck('name')->toArray());
                     });
->>>>>>> fd5dc0e4db9b93532ba0401ad6d01417eb00dc28
             }
             //  elseif ($role->name == 'DATA CENTER') {
             //     $modules->whereIn('label', ['Log', 'Log Aplikasi', 'Setting', 'Management API', 'Datasource', 'Log Transaksi', 'Sinkronisasi', 'Pegawai', 'Limit', 'Server'])

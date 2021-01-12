@@ -88,6 +88,11 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
+                                    <a class="menu-link" href="{{ route('landingdetail', [ 'id' => env('UK_RISET_ID') ]) }}">
+                                        <div>Riset</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
                                     <a class="menu-link" href="#">
                                         <div>Konglomerasi Keuangan</div>
                                     </a>

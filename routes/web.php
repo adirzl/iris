@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-    return Redirect::to(url(auth()->check() ? 'home' : 'landing'));
-=======
     return redirect(auth()->check() ? 'home' : 'login');
->>>>>>> fd5dc0e4db9b93532ba0401ad6d01417eb00dc28
 });
 
 Auth::routes(['reset' => false, 'verify' => false]);
@@ -28,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Landing Routes
 Route::get('/landing', 'LandingController@index')->name('landing');
+Route::get('/{id}/detail', 'LandingController@detail')->name('landingdetail');
+
 Route::get('/tentang_kk', 'LandingController@tentang_kk');
 Route::get('/sekilas_kk', 'LandingController@sekilas_kk');
 Route::get('/struktur_kk', 'LandingController@struktur_kk');

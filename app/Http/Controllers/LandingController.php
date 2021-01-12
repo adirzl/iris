@@ -18,6 +18,9 @@ use Modules\IsiKuisioner\Entities\IsiKuisionerDetail;
 use Modules\Kuisioner\Entities\Penilaian;
 use Modules\Kuisioner\Entities\Pertanyaan;
 use Knp\Snappy\Pdf;
+use Modules\FileType\Entities\FileArchive;
+use Modules\FileType\Entities\FileType;
+use Modules\HCS\Entities\UnitKerja;
 use Validator;
 
 class LandingController extends Controller
@@ -32,6 +35,14 @@ class LandingController extends Controller
         $data = Banner::get();
         $data_artikel = Artikel::where('status', 1)->orderBy('created_at', 'DESC')->get();
         return view('landing.index', compact('data', 'data_artikel'));
+    }
+
+
+    public function detail($id){
+        $unitkerja = UnitKerja::findOrFail($id);
+        $fileType = FileType::where('unitkerja_kode', $id)->get();
+        $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType')->where('ft.unitkerja_kode', $id)->get();
+        return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
     }
 
     public function login_iris()
@@ -230,7 +241,7 @@ class LandingController extends Controller
             echo $pdf->getOutputFromHtml($html, ['orientation' => 'Landscape']);
         }
     }
-    
+
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

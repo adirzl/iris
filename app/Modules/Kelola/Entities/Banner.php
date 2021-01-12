@@ -69,7 +69,7 @@ class Banner extends \App\Entities\Model
         if ($request->title) {
             $query->where('title', 'ilike', '%' . $request->title . '%');
         }
-        
+
         if (in_array($request->status, ['1', '2'])) {
             $query->where('status', $request->status);
         }

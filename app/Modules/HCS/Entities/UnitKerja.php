@@ -7,12 +7,14 @@ class UnitKerja extends \Illuminate\Database\Eloquent\Model
     /**
      * @var string
      */
-    protected $table = 'hcs_unit_kerja';
+    // protected $table = 'hcs_unit_kerja';
+    protected $table = 'app_unitkerja';
+    public $primaryKey = 'kode';
 
     /**
      * @var boolean
      */
-    protected $primaryKey = false;
+    // protected $primaryKey = false;
 
     /**
      * @var boolean
@@ -22,7 +24,7 @@ class UnitKerja extends \Illuminate\Database\Eloquent\Model
     /**
      * @var boolean
      */
-    public $timestamps = false;
+    // public $timestamps = false;
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -50,7 +52,7 @@ class UnitKerja extends \Illuminate\Database\Eloquent\Model
 
             return $q->paginate(config('app.display_per_page'));
         }
-        
+
         return $q->get();
     }
 }
