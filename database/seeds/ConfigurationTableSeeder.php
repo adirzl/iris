@@ -25,7 +25,7 @@ class ConfigurationTableSeeder extends Seeder
         $sessionSecureCookie = config('session.secure_cookie') ? 'true' : 'false';
 
         $configurations = [
-            ['key' => 'id', 'value' => '100', 'shortdesc' => 'ID Aplikasi di UIM', 'user_config' => 0, 'component' => 'app'],
+            ['key' => 'id', 'value' => '100', 'shortdesc' => 'ID Aplikasi di EMS', 'user_config' => 0, 'component' => 'app'],
             ['key' => 'url', 'value' => request()->getSchemeAndHttpHost(), 'shortdesc' => null, 'user_config' => 0, 'component' => 'app'],
             ['key' => 'https', 'value' => $https, 'shortdesc' => null, 'user_config' => 0, 'component' => 'app'],
             ['key' => 'domain_url', 'value' => request()->getSchemeAndHttpHost(), 'shortdesc' => null, 'user_config' => 0, 'component' => 'app'],
@@ -81,18 +81,14 @@ class ConfigurationTableSeeder extends Seeder
 
             ['key' => 'wkhtmltopdf', 'value' => (config('app.env') === 'local' ? '"D:\Server\wkhtmltopdf\bin\wkhtmltopdf.exe"' : '/usr/local/bin/wkhtmltopdf-amd64'), 'shortdesc' => null, 'user_config' => 0, 'component' => 'misc'],
 
-            ['key' => 'name', 'value' => 'UIM', 'shortdesc' => 'Nama Aplikasi', 'user_config' => 1, 'component' => 'app'],
-            ['key' => 'display_name', 'value' => 'Tools UIM', 'shortdesc' => 'Nama Aplikasi yang ditampilkan', 'user_config' => 1, 'component' => 'app'],
+            ['key' => 'name', 'value' => 'TDA', 'shortdesc' => 'Nama Aplikasi', 'user_config' => 1, 'component' => 'app'],
+            ['key' => 'display_name', 'value' => 'TEMP DOC APP', 'shortdesc' => 'Nama Aplikasi yang ditampilkan', 'user_config' => 1, 'component' => 'app'],
             ['key' => 'logo', 'value' => 'logo.png', 'shortdesc' => 'Logo Aplikasi', 'user_config' => 1, 'component' => 'app'],
             ['key' => 'display_per_page', 'value' => '10', 'shortdesc' => 'Default data yang ditampilkan dalam tabel', 'user_config' => 1, 'component' => 'app'],
             ['key' => 'copyright', 'value' => 'Copyright &copy; 2020. bankbjb.', 'shortdesc' => null, 'user_config' => 1, 'component' => 'app'],
             ['key' => 'auto_logout', 'value' => '10', 'shortdesc' => 'Auto Logout User jika idle (dalam menit)', 'user_config' => 1, 'component' => 'parameter'],
-            ['key' => 'app_server', 'value' => '192.168.226.159', 'shortdesc' => 'IP App Server', 'user_config' => 1, 'component' => 'parameter'],
-            ['key' => 'uim_api_user', 'value' => 'I816', 'shortdesc' => 'User Otentikasi UIM API', 'user_config' => 1, 'component' => 'parameter'],
-            ['key' => 'uim_api_pass', 'value' => 'bandung10', 'shortdesc' => 'Password Otentikasi UIM API', 'user_config' => 1, 'component' => 'parameter'],
-            ['key' => 'uim_api_dev', 'value' => '10.6.226.199:3000/api', 'shortdesc' => 'IP UIM API Development', 'user_config' => 1, 'component' => 'parameter'],
-            ['key' => 'uim_api_prod', 'value' => '10.6.232.134/v1/api', 'shortdesc' => 'IP UIM API Production', 'user_config' => 1, 'component' => 'parameter'],
-
+            ['key' => 'app_server', 'value' => '127.0.0.1:84', 'shortdesc' => 'IP App Server', 'user_config' => 1, 'component' => 'parameter'],
+            
         ];
 
         DB::table($this->table)->insert($configurations);

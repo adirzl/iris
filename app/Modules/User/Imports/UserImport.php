@@ -24,7 +24,7 @@ class UserImport implements ToCollection, WithHeadingRow
             \Illuminate\Support\Facades\DB::table('app_user')->insert([
                 'id' => \Illuminate\Support\Str::uuid(),
                 'username' => $collect['username'],
-                'password' => bcrypt('p@ssw0rd'),
+                'password' => bcrypt('a'),
                 'email' => $collect['email'],
             ]);
 
@@ -34,6 +34,8 @@ class UserImport implements ToCollection, WithHeadingRow
                 'nama' => $collect['nama'],
                 'nip' => $collect['nip'],
                 'hp' => $collect['hp'],
+                'unit_kerja_kode' => $collect['unit_kerja_kode'],
+                'unit_kerja_parent' => $collect['unit_kerja_parent'],
             ]);
             $role = Role::findById($collect['role_id']);
             $user->assignRole($role->name);

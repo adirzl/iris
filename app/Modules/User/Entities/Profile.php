@@ -27,11 +27,16 @@ class Profile extends \Illuminate\Database\Eloquent\Model
      * @var array
      */
     protected $fillable = [
-        'nama', 'nip', 'hp',
+        'nama', 'nip', 'hp','unit_kerja_kode'
     ];
 
     /**
      * @var bool
      */
     public $timestamps = false;
+
+    public function unitkerja()
+    {
+        return $this->hasOne('Modules\UnitKerja\Entities\UnitKerja','kode', 'unit_kerja_kode');
+    }
 }
