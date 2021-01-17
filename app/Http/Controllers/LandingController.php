@@ -40,6 +40,7 @@ class LandingController extends Controller
 
     public function detail($id){
         $unitkerja = UnitKerja::findOrFail($id);
+        dd($unitkerja);
         $fileType = FileType::where('unitkerja_kode', $id)->get();
         $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType')->where('ft.unitkerja_kode', $id)->get();
         return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
