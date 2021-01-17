@@ -12,7 +12,7 @@ class Requestfile extends \App\Entities\Model
     /**
      * @var array
      */
-    protected $fillable = ['id', 'user_id', 'filearchive_id', 'description', 'status'];
+    protected $fillable = ['id', 'user_id', 'filearchive_id', 'description', 'status', 'rejectnote'];
 
     /**
      * @var array
@@ -21,7 +21,7 @@ class Requestfile extends \App\Entities\Model
         'id',
     ];
 
-    protected $primaryKey = 'kode';
+    // protected $primaryKey = 'kode';
 
 
     protected $keyType = 'string';
@@ -42,7 +42,7 @@ class Requestfile extends \App\Entities\Model
         }
 
         $q = $query->select(array_merge($this->fillable, ['id']))
-            ->orderBy('name');
+            ->orderBy('created_at');
 
         if ($request->has('per_page')) {
             return $request->per_page === 'All' ? $q->get() : $q->paginate($request->per_page);

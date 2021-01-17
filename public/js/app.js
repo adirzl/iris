@@ -20409,17 +20409,11 @@ $(function() {
                     window.URL.revokeObjectURL(link);
                     $(".loading-page").fadeOut();
                 } else {
-<<<<<<< HEAD
                     Swal.fire("Error", xhr.statusText, "error").then(
                         result => {
                             $(".loading-page").fadeOut();
                         }
                     );
-=======
-                    Swal.fire("Error", xhr.statusText, "error").then(result => {
-                        $(".loading-page").fadeOut();
-                    });
->>>>>>> fd5dc0e4db9b93532ba0401ad6d01417eb00dc28
                 }
             },
             error: function(xhr) {
@@ -20521,11 +20515,7 @@ $(function() {
         window.location = BaseURI + "/" + uri + "?" + queryString.join("&");
     });
 
-<<<<<<< HEAD
     $('input[name="check_all"]').on('click', function() {
-=======
-    $('input[name="check_all"]').on("click", function() {
->>>>>>> fd5dc0e4db9b93532ba0401ad6d01417eb00dc28
         var isChecked = $(this).is(":checked");
         $('input[name="check[]"]').each(function() {
             $(this).prop("checked", isChecked);

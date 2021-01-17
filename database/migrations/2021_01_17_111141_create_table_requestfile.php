@@ -19,6 +19,7 @@ class CreateTableRequestfile extends Migration
             $table->uuid('filearchive_id');
             $table->text('description');
             $table->smallInteger('status');
+            $table->text('rejectnote');
             $table->timestamps();
             $table->softDeletes();
 

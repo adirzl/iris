@@ -17,7 +17,19 @@
                     <tbody>
                     @foreach ($data as $d)
                         <tr>
-                            <td>{!! Html::linkUpdateDelete('opsi', ['id' => $d->id, 'label' => $d->name]) !!}</td>
+                            <td>
+                                @php
+                                    $actions = null;
+                                    $actions = [
+                                        [
+                                            'url' => 'requestfile.approval', 'permission' => 'approval requestfile', 'attributes' => [
+                                                'rel' => 'content', 'title' => __('label.approval_message', ['label' => $d->created_at])
+                                            ], 'label' => __('label.approval_message', ['label' => $d->created_at]),
+                                        ],
+                                    ];
+                                @endphp
+                                {!! Html::linkActions($actions, $d->id) !!}
+                            </td>
                             <td>{{ $d->user_id }}</td>
                             <td>{{ $d->filearchive_id }}</td>
                             <td>{{ $d->description }}</td>
