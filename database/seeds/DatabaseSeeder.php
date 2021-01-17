@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ConfigurationTableSeeder::class);
         $this->call(Modules\Opsi\Database\Seeds\OptionsTablesSeeder::class);
         $this->call(PermissionsTablesSeeder::class);
-        $this->call(UnitKerjaSeeder::class);
-        $this->call(UsersSeeder::class);
-        
-        
+        // $this->call(UnitKerjaSeeder::class);
+        $this->call(UsersTableSeeder::class);
+
+
     }
 }
