@@ -34,7 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'email', 'status',
+        'id','username', 'password', 'email', 
     ];
 
     /**
@@ -64,6 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var bool
      */
     protected static $logFillable = true;
+
 
     /**
      * The "booting" method of the model.
@@ -101,7 +102,11 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function profile()
     {
-        return $this->hasOne(Profile::class, 'user_id');
+        return $this->hasOne(Profile::class);
+    }
+    public function role()
+    {
+        return $this->hasOne('App\Entities\RoleUser','model_uuid','id');
     }
 
     /**
@@ -140,4 +145,52 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('mst_model_has_role.role_id', $roleId)
             ->get();
     }
+
+    public function scopefetch($query, $request, $export = false)
+    {
+
+        if ($request->username || $request->email) {
+            $query->where([
+                ['username', 'ilike', '%' . $request->username . '%'], ['email', 'ilike', '%' . $request->email . '%']
+            ]);
+        }
+        
+        $q = $query->select(array_merge($this->fillable, ['id','username','password','email', 'created_at', 'updated_at']))
+            ->orderBy('username');
+         
+        if ($export === false) {
+            if ($request->has('per_page')) {
+                return $request->per_page === 'All' ? $q->get() : $q->paginate($request->per_page);
+            }
+
+            return $q->paginate(config('app.display_per_page'));
+        }
+        return $q->get();
+    }
+
+
+    public function scopebjbcallfetch($query, $request, $export = false)
+    {
+
+        if ($request->username || $request->email) {
+            $query->where([
+                ['username', 'ilike', '%' . $request->username . '%'], ['email', 'ilike', '%' . $request->email . '%']
+            ]);
+        }
+        
+        $q = $query->select(array_merge($this->fillable, ['id','username','password','email', 'created_at', 'updated_at']))
+            ->where('username','like','BC%')
+            ->orderBy('username');
+        
+        if ($export === false) {
+            if ($request->has('per_page')) {
+                return $request->per_page === 'All' ? $q->get() : $q->paginate($request->per_page);
+            }
+            return $q->paginate(config('app.display_per_page'));
+        }
+
+        return $q->get();
+        
+    }
+
 }

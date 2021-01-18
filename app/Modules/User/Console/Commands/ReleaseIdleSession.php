@@ -39,9 +39,9 @@ class ReleaseIdleSession extends Command
      */
     public function handle()
     {
-        $users = User::whereNotNull('session_id')->get();
-        $prefix = Str::slug(config('app.display_name'), '_') . '_database' . '_' . Str::slug(config('app.display_name'), '_') . '_cache';
-        $redis = new \Predis\Client();
+        // $users = User::whereNotNull('session_id')->get();
+        // $prefix = Str::slug(config('app.display_name'), '_') . '_database' . '_' . Str::slug(config('app.display_name'), '_') . '_cache';
+        // $redis = new \Predis\Client();
 
         // foreach ($users as $user) {
         //     $idleMinutes = now()->diffInMinutes(\Carbon\Carbon::parse($user->last_activity));

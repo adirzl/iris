@@ -11,12 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(UnitKerjaSeeder::class);
         $this->call(ConfigurationTableSeeder::class);
         $this->call(Modules\Opsi\Database\Seeds\OptionsTablesSeeder::class);
         $this->call(PermissionsTablesSeeder::class);
-        $this->call(Modules\RuleHakAkses\Database\Seeds\RuleHakAksesTableSeeder::class);
-        $this->call(Modules\LimitOtorisasi\Database\Seeds\LimitOtorisasiTableSeeder::class);
-        $this->call(Modules\API\Database\Seeds\DatasourceTableSeeder::class);
-        // $this->call(RsmUsersSeeder::class);
+        // $this->call(UnitKerjaSeeder::class);
+        $this->call(UsersTableSeeder::class);
+
+
     }
 }

@@ -82,167 +82,52 @@
                         <nav class="primary-menu">
 
                             <ul class="menu-container">
+                                {{-- <li class="menu-item">
+                                    <a class="menu-link" href="{{ url('landing') }}">
+                                        <div>Beranda</div>
+                                    </a>
+                                </li> --}}
                                 <li class="menu-item">
                                     <a class="menu-link" href="{{ url('landing') }}">
                                         <div>Beranda</div>
+                                    </a>
+                                    <ul class="sub-menu-container">
+                                        <li class="menu-item">
+                                            <a class="menu-link" href="{{ url('tentang_kk') }}">
+                                                <div><i class="icon-stack"></i>Profil</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a class="menu-link" href="{{ url('tugas_wew_kk') }}">
+                                                <div><i class="icon-stack"></i>Visi Misi</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a class="menu-link" href="{{ url('sekilas_kk') }}">
+                                                <div><i class="icon-stack"></i>Sekapur Sirih Pindiv</div>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a class="menu-link" href="{{ url('struktur_kk') }}">
+                                                <div><i class="icon-stack"></i>Arsip Dokumen</div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-link" href="{{ url('tentang_kinke') }}">
+                                        <div>Perencanaan Bisnis Bank (PBB)</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a class="menu-link" href="{{ url('tentang_kinke') }}">
+                                        <div>Pengembangan Organisasi</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
                                     <a class="menu-link" href="{{ route('landingdetail', [ 'id' => env('UK_RISET_ID') ]) }}">
                                         <div>Riset</div>
                                     </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-link" href="#">
-                                        <div>Konglomerasi Keuangan</div>
-                                    </a>
-                                    <ul class="sub-menu-container">
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('tentang_kk') }}">
-                                                <div><i class="icon-stack"></i>Profil Konglomerasi Keuangan</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('sekilas_kk') }}">
-                                                <div><i class="icon-stack"></i>Sekilas Konglomerasi Keuangan</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('struktur_kk') }}">
-                                                <div><i class="icon-stack"></i>Struktur Konglomerasi Bank bjb</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('comp_prof_kk') }}">
-                                                <div><i class="icon-stack"></i>Company Profile LJK Dalam Konglomerasi Keuangan</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('tugas_wew_kk') }}">
-                                                <div><i class="icon-stack"></i>Tugas dan Kewenangan Entitas Utama</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-link" href="#">
-                                        <div>Kinerja Keuangan</div>
-                                    </a>
-                                    <ul class="sub-menu-container">
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('tentang_kinke') }}">
-                                                <div><i class="icon-stack"></i>Tentang Kinerja Keuangan</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('report_sumber') }}">
-                                                <div><i class="icon-stack"></i>Report Penginputan Sumber Data</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('kajian_kinke') }}">
-                                                <div><i class="icon-stack"></i>Kajian Kinerja Keuangan</div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-link" href="{{ url('regulasi') }}">
-                                        <div>Regulasi</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-link" href="{{ url('berita') }}">
-                                        <div>Berita</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a class="menu-link" href="#">
-                                        <div>Penerapan Tatakelola Terintegrasi</div>
-                                    </a>
-                                    <ul class="sub-menu-container">
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('tentang_tatakelola') }}">
-                                                <div><i class="icon-stack"></i>Tata Kelola Terintegrasi</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="#">
-                                                <div><i class="icon-stack"></i>Fungsi Pengawasan Manajemen Risiko</div>
-                                            </a>
-                                            <ul class="sub-menu-container">
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('tentang_manrisk') }}">
-                                                        <div>Tentang Manajemen Risiko Terintegrasi</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('rencana_kerja_manrisk') }}">
-                                                        <div>Rencana Kerja Tahunan Manrisk Terintegrasi</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('report_kuisioner_manrisk') }}">
-                                                        <div>Laporan Pengisian Kuisioner Manajemen Risiko LJK</div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="#">
-                                                <div><i class="icon-stack"></i>Fungsi Pengawasan Kepatuhan dan APU-PPT</div>
-                                            </a>
-                                            <ul class="sub-menu-container">
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('tentang_kepatuhan') }}">
-                                                        <div>Tentang Pengawasan Kepatuhan dan APU-PPT</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('rencana_kerja_kepatuhan') }}">
-                                                        <div>Rencana Kerja Tahunan Kepatuhan</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('report_kuisioner_kepatuhan') }}">
-                                                        <div>Laporan Pengisian Kuisioner Kepatuhan</div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="#">
-                                                <div><i class="icon-stack"></i>Fungsi Pengawasan Audit Internal</div>
-                                            </a>
-                                            <ul class="sub-menu-container">
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('tentang_audit') }}">
-                                                        <div>Tentang Pengawasan Audit Internal</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('rencana_kerja_audit') }}">
-                                                        <div>Rencana Kerja Audit Tahunan</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="{{ url('report_kuisioner_audit') }}">
-                                                        <div>Laporan Pengisian Kuisioner Audit Internal</div>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item">
-                                                    <a class="menu-link" href="#">
-                                                        <div>Laporan Hasil Monitoring dan Tindak Lanjut</div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="#">
-                                                <div><i class="icon-stack"></i>Pelaporan Tata Kelola</div>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
 

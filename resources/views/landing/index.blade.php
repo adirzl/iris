@@ -1,161 +1,214 @@
 @extends('layouts.app_landing')
 @section('content')
 
-<section id="slider" class="slider-element slider-parallax swiper_wrapper vh-75">
-    <div class="slider-inner">
+    <section id="slider" class="slider-element slider-parallax swiper_wrapper vh-75" data-margin="1" data-pagi="false"
+        data-autoplay="5000" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-xl="4">
+        <div class="slider-inner">
 
-        <div class="swiper-container swiper-parent">
-            <div class="swiper-wrapper">
-                @foreach($data as $v)
-                @if($v->status == 1)
-                <div class="swiper-slide dark">
-                    <div class="swiper-slide-bg" style="background-image: url('banner/{{$v->image}}');"></div>
-                </div>
-                @endif
-                @endforeach
-            </div>
-            <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
-            <div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
-            <div class="slide-number">
-                <div class="slide-number-current"></div><span>/</span>
-                <div class="slide-number-total"></div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- Content
-		============================================= -->
-<section id="content">
-    <div class="content-wrap">
-
-        <div class="promo promo-light promo-full bottommargin-lg header-stick border-top-0 p-5">
-            <div class="container clearfix">
-                <div class="row align-items-center">
-                    <div class="col-12 col-lg">
-                        <h3>Integrated Reporting Information System (<span> IRIS</span> )</h3>
-                        <span>Merupakan sebuah <em>wadah informasi terpadu</em> yang dibentuk untuk mengintegrasikan <em>laporan keuangan</em> <br>dan <em>tata kelola anggota</em> Konglomerasi Keuangan <em>Bank bjb</em></span>
-                    </div>
-                    <div class="col-12 col-lg-auto mt-4 mt-lg-0">
-                        <a href="{{url(auth()->check() ? 'home' : 'login_iris')}}" target="blank" class="button button-large button-circle m-0">Login</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container clearfix">
-
-            <div class="row col-mb-50">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box fbox-center fbox-light fbox-effect border-bottom-0">
-                        <div class="fbox-icon">
-                            <a href="#"><i class="i-alt border-0 icon-line-monitor"></i></a>
-                        </div>
-                        <div class="fbox-content">
-                            <h3>Monitoring<span class="subtitle">Informasi yang terkelola</span></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box fbox-center fbox-light fbox-effect border-bottom-0">
-                        <div class="fbox-icon">
-                            <a href="#"><i class="i-alt border-0 icon-project-diagram"></i></a>
-                        </div>
-                        <div class="fbox-content">
-                            <h3>Integrated Information<span class="subtitle">Informasi yang terintegrasi</span></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box fbox-center fbox-light fbox-effect border-bottom-0">
-                        <div class="fbox-icon">
-                            <a href="#"><i class="i-alt border-0 icon-news"></i></a>
-                        </div>
-                        <div class="fbox-content">
-                            <h3>Transparency<span class="subtitle">Transparansi data</span></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3">
-                    <div class="feature-box fbox-center fbox-light fbox-effect border-bottom-0">
-                        <div class="fbox-icon">
-                            <a href="#"><i class="i-alt border-0 icon-calendar-check"></i></a>
-                        </div>
-                        <div class="fbox-content">
-                            <h3>Monthly Report<span class="subtitle">Laporan setiap bulan</span></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section topmargin-lg">
-            <div class="heading-block center">
-                <h3>Berita dan Artikel <span>Anak Perusahaan</span></h3>
-                <span>Informasi terkini tentang anak perusahaan Bank bjb.</span>
-            </div>
-
-            <div id="oc-portfolio" class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-pagi="false" data-autoplay="5000" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-xl="4">
-                @foreach($data_artikel as $w)
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <a href="{{ url('berita_content/'.$w->id) }}">
-                            <img src="{{asset('artikel/'.$w->image)}}" alt="Open Imagination">
-                        </a>
-                        <div class="bg-overlay">
-                            <div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-speed="350">
-                                <a href="{{asset('artikel/'.$w->image)}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeInUpSmall" data-hover-speed="350" data-lightbox="image"><i class="icon-line-plus"></i></a>
-                                <a href="{{ url('berita_content/'.$w->id) }}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeInUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    @foreach ($data as $v)
+                        @if ($v->status == 1)
+                            <div class="swiper-slide dark">
+                                <div class="container">
+                                    <div class="slider-caption slider-caption-left">
+                                        <h2 data-animate="fadeInUp">[judul]</h2>
+                                        <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">[deskripsi]
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide-bg" style="background-image: url('banner/{{ $v->image }}');"></div>
                             </div>
-                            <div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-speed="350"></div>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                <div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+                <div class="slide-number">
+                    <div class="slide-number-current"></div><span>/</span>
+                    <div class="slide-number-total"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Content
+                                                                                    ============================================= -->
+    <section id="content">
+        <div class="content-wrap">
+
+            <div class="promo promo-light promo-full bottommargin-lg header-stick border-top-0 p-5">
+                <div class="container clearfix">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg">
+                            <h3>Documents Management Application (<span> DMA</span> )</h3>
+                            <span>Merupakan sebuah <em>wadah peng arsipan dokumen</em> yang dibentuk untuk mengintegrasikan
+                                <em>seluruh dokumentasi</em> <br>dan <em>tata kelola dokumen</em> di lingkungan
+                                <em>Bank bjb</em></span>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-4 mt-lg-0">
+                            <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank"
+                                class="button button-large button-circle m-0">Login</a>
                         </div>
                     </div>
-                    <div class="portfolio-desc">
-                        <span>{{ date('d M Y', strtotime($w->created_at)) }}</span>
-                        <h3><a href="{{ url('berita_content/'.$w->id) }}">{{$w->title}}</a></h3>
-                        <span><a href="#">{{ Str::words($w->description,1) }}</a></span>
+                </div>
+            </div>
+
+            <div class="container clearfix">
+
+                <div id="section-specs" class="heading-block text-center page-section">
+                    <h2>Divisi Perencanaan</h2>
+                    <span>Sekilas tentang Divisi Perencanaan</span>
+                </div>
+
+                <div id="side-navigation" class="row" data-plugin="tabs">
+
+                    <div class="col-md-4">
+
+                        <ul class="sidenav">
+                            <li><a href="#snav-content1"><i class="icon-screen"></i>Profil<i
+                                        class="icon-chevron-right"></i></a></li>
+                            <li><a href="#snav-content2"><i class="icon-rocket"></i>Visi dan Misi<i
+                                        class="icon-chevron-right"></i></a></li>
+                            <li><a href="#snav-content3"><i class="icon-user"></i>Sekapur Sirih Pimpinan Divisi<i
+                                        class="icon-chevron-right"></i></a></li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-8">
+
+                        <div id="snav-content1">
+                            <h3>Profil</h3>
+                            <img class="alignright img-responsive" src="#" alt="Image">
+
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, ex, inventore, tenetur, repellat
+                            ipsam soluta libero amet nam aspernatur perspiciatis quos praesentium et debitis ea odit enim
+                            illo aliquid eligendi numquam neque. Ipsum, voluptatibus, perspiciatis a quam aliquid cumque
+                            cupiditate id ipsa tempora eveniet. Cupiditate, necessitatibus, consequatur odio. Lorem ipsum
+                            dolor sit amet, consectetur adipisicing elit. Dicta, vitae, laboriosam libero nihil labore hic
+                            modi? Odit, veritatis nulla molestiae!
+                        </div>
+
+                        <div id="snav-content2">
+                            <h3>Visi dan Misi</h3>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptatem reprehenderit natus
+                            facilis id deserunt iusto incidunt cumque odit molestias iste dolor eum esse soluta facere
+                            quidem minima in voluptate explicabo ducimus alias ratione aut molestiae omnis fuga labore quod
+                            optio modi voluptatum nemo suscipit porro maxime ex. Maiores, ratione eligendi labore quaerat
+                            veniam laborum nam rem delectus illum aspernatur quas sequi animi quae nulla alias hic inventore
+                            ex perspiciatis nisi consequatur enim a aut dolorum modi quod perferendis dicta impedit magni
+                            placeat repellat. Soluta, dicta, dolores, reiciendis, eum accusamus esse et debitis rem fugit
+                            fugiat dignissimos pariatur sint quod laborum autem. Nulla, ducimus, culpa, vel esse unde
+                            sapiente expedita corrupti consectetur veritatis quas autem laborum mollmquam amet eius.
+                            Numquam, ad, quaerat, ab, deleniti rem quae doloremque tenetur ea illum hic amet dolor suscipit
+                            porro ducimus excepturi perspiciatis modi praesentium voluptas quos expedita provident adipisci
+                            dolorem! Aliquam, ipsum voluptatem et voluptates impedit ab libero similique a. Nisi, ea magni
+                            et ab voluptatum nemo numquam odio quis libero aspernatur architecto tempore qui quisquam saepe
+                            corrupti necessitatibus natus quos aliquid non voluptatibus quod obcaecati fugiat quibusdam
+                            quidem inventore quia eveniet iusto culpa incidunt vero vel in accusamus eum. Molestiae nihil
+                            voluptate molestias illum eligendi esse nesciunt.
+                        </div>
+
+                        <div id="snav-content3">
+                            <img class="alignleft img-responsive" src="#" alt="Image">
+                            <h3>Sekapur Sirih Pimpinan Divisi</h3>
+                            Dolor aperiam modi aliquam dolores consequatur error commodi ad
+                            eius incidunt! Libero, odio incidunt ullam sunt fugiat? Laboriosam, perferendis, debitis, harum
+                            soluta iste eos sunt odit architecto porro eveniet sint optio nihil animi. Laudantium, quam,
+                            culpa, velit molestias exercitationem reprehenderit enim distinctio aliquam aut ex numquam sequi
+                            assumenda veritatis fuga voluptatum. Magni, voluptates adipisci unde sapiente eligendi ea maxime
+                            tempora pariatur ipsa.. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae,
+                            aspernatur, saepe, quidem animi hic rem libero earum fuga voluptas culpa iure qui accusantium ab
+                            quae dolorum laborum quia repellat fugit aut minima molestias placeat mollitia doloribus
+                            quibusdam consectetur officia nesciunt ad. Ab, quod ipsum commodi assumenda doloribus possimus
+                            sed laudantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-title">
+        <div class="container clearfix">
+            {{-- <h1>{{ strtoupper($unitkerja->name) }}</h1> --}}
+            <h1>[unitkerja_name]</h1>
+            <span>Deskripsi singkat judul</span>
+        </div>
+    </section>
+    <section id="content">
+        <div class="content-wrap">
+            <div class="container clearfix">
+                <div class="row">
+                    <div class="postcontent col-lg-9">
+                        <ul>
+                            {{-- @foreach ($data as $item)
+                                <li>{{ $item->name }}</li>
+                            @endforeach --}}
+                            <div class="table-responsive">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nomor</th>
+                                            <th>Nama Dokumen</th>
+                                            <th>Kategori</th>
+                                            <th>Type</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>$nama_dokumen</td>
+                                            <td>$kategori</td>
+                                            <td>$type</td>
+                                            <td>$tanggal</td>
+                                            <td>$status</td>
+                                            <td>$action</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>$nama_dokumen</td>
+                                            <td>$kategori</td>
+                                            <td>$type</td>
+                                            <td>$tanggal</td>
+                                            <td>$status</td>
+                                            <td>$action</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar col-lg-3">
+                        <div class="sidebar-widgets-wrap">
+                            <div class="widget clearfix">
+                                {{ Form::text('keyword', null, ['class' => 'form-control', 'id' => 'keyword', 'placeholder' => 'Pencarian']) }}
+                                <br>
+                                <button class="btn btn-secondary">Cari</button>
+                                <div style="margin-top: 10%">
+                                    <label>File Type</label>
+                                    <li>{{ Form::checkbox('fileType[]', true, null) }} [name]</li>
+                                    {{-- @foreach ($fileType as $item)
+                                        <ul>
+                                            <li>{{ Form::checkbox('fileType[]', true, null) }} {{ $item->name }}</li>
+                                        </ul>
+                                    @endforeach --}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                @endforeach
 
             </div>
         </div>
-
-        <div class="container clearfix">
-
-            <div id="oc-clients" class="owl-carousel owl-carousel-full image-carousel carousel-widget" data-margin="30" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="5" style="padding: 20px 0;">
-
-                <div class="oc-item">
-                    <a href="#"><img src="{{asset('app-assets/images/logo/1.png')}}" alt="Clients" height="120" width="100"></a>
-                </div>
-                <div class="oc-item">
-                    <a href="#"><img src="{{asset('app-assets/images/logo/2.png')}}" alt="Clients" height="100" width="100"></a>
-                </div>
-                <div class="oc-item">
-                    <a href="#"><img src="{{asset('app-assets/images/logo/3.png')}}" alt="Clients" height="100" width="50"></a>
-                </div>
-                <div class="oc-item">
-                    <h3>BPR Jalan Cagak Subang</h3>
-                </div>
-                <div class="oc-item">
-                    <a href="#"><img src="{{asset('app-assets/images/logo/5.png')}}" alt="Clients" height="100" width="100"></a>
-                </div>
-
-            </div>
-
-        </div>
-
-        <a href="{{url(auth()->check() ? 'home' : 'login_iris')}}" target="blank" class="button button-full center text-right footer-stick">
-            <div class="container clearfix">
-                Laporan keuangan anak perusahaan. <strong>Login</strong> <i class="icon-caret-right" style="top:4px;"></i>
-            </div>
-        </a>
-
-    </div>
-</section>
-<!-- #content end -->
+    </section>
+    <!-- #content end -->
 @endsection
