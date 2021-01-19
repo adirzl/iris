@@ -19,13 +19,12 @@ trait AuthenticatesUsers
     protected function attemptLogin(Request $request)
     {
         $credentials = $this->credentials($request);
-
         if (strlen($credentials[$this->username()]) == 4 && config('auth.force_local') === false) {
             $authenticated = $this->uim($credentials);
         } else {
+            
             $authenticated =  $this->guard()->attempt($credentials, $request->filled('remember'));
         }
-
         if ($authenticated) {
             $user = \Modules\User\Entities\User::findByUsername($credentials[$this->username()]);
             $this->guard()->login($user);

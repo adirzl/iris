@@ -51,17 +51,10 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories",
-            "app/Modules/API/database/seeds",
-            "app/Modules/HCS/database/seeds",
-            "app/Modules/LimitOtorisasi/database/seeds",
-            "app/Modules/Opsi/database/seeds",
-            "app/Modules/RuleHakAkses/database/seeds",
-            "app/Modules/UIM/database/seeds"
+            "database/factories"
         ],
         "files": [
-            "app/helpers.php",
-            "app/uim_helpers.php"
+            "app/helpers.php"
         ]
     },
     "autoload-dev": {

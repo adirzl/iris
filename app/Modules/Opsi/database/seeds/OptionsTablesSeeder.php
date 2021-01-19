@@ -164,31 +164,26 @@ class OptionsTablesSeeder extends Seeder
                     ],
                 ]
             ],
-            // [
-            //     'id' => Str::uuid(), 'name' => 'grup_limit', 'created_at' => $now, 'updated_at' => $now,
-            //     'values' => [
-            //         [
-            //             'id' => Str::uuid(), 'key' => 'PINCAB', 'value' => 'PINCAB', 'sequence' => 1,
-            //             'created_at' => $now, 'updated_at' => $now
-            //         ],
-            //         [
-            //             'id' => Str::uuid(), 'key' => 'MANCAB', 'value' => 'MANCAB', 'sequence' => 2,
-            //             'created_at' => $now, 'updated_at' => $now
-            //         ],
-            //         [
-            //             'id' => Str::uuid(), 'key' => 'PINKCP', 'value' => 'PINKCP', 'sequence' => 3,
-            //             'created_at' => $now, 'updated_at' => $now
-            //         ],
-            //         [
-            //             'id' => Str::uuid(), 'key' => 'SPVCAB', 'value' => 'SPVCAB', 'sequence' => 4,
-            //             'created_at' => $now, 'updated_at' => $now
-            //         ],
-            //         [
-            //             'id' => Str::uuid(), 'key' => 'SPVKCP', 'value' => 'SPVKCP', 'sequence' => 5,
-            //             'created_at' => $now, 'updated_at' => $now
-            //         ],
-            //     ]
-            // ],
+            [
+                'id' => Str::uuid(), 'name' => 'jadwal', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => '1', 'value' => 'Belum diimplentasikan', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => '2', 'value' => 'Masih Dalam Perencanaan Internal', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => '3', 'value' => 'Masih Dalam Pembahasan Komisaris', 'sequence' => 3,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => '4', 'value' => 'Telah Diimplemantsikan', 'sequence' => 4,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],                ]
+            ],
             [
                 'id' => Str::uuid(), 'name' => 'environment', 'created_at' => $now, 'updated_at' => $now,
                 'values' => [
@@ -343,6 +338,33 @@ class OptionsTablesSeeder extends Seeder
                     ],
                     [
                         'id' => Str::uuid(), 'key' => '2', 'value' => 'Tidak Aktif', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                ]
+            ],
+
+            [
+                'id' => Str::uuid(), 'name' => 'status_dokumen', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => '1', 'value' => 'Aktif', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => '2', 'value' => 'Tidak Aktif', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                ]
+            ],
+            [
+                'id' => Str::uuid(), 'name' => 'status_data', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => '1', 'value' => 'Tugas', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => '2', 'value' => 'Wewenang', 'sequence' => 2,
                         'created_at' => $now, 'updated_at' => $now
                     ],
                 ]

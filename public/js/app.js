@@ -20516,7 +20516,6 @@ $(function() {
     });
 
     $('input[name="check_all"]').on('click', function() {
-        var isChecked = $(this).is(":checked");
         $('input[name="check[]"]').each(function() {
             $(this).prop("checked", isChecked);
         });
