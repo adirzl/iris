@@ -104,7 +104,7 @@
                                     <a class="menu-link" href="{{ url('landing') }}">
                                         <div>Beranda</div>
                                     </a>
-                                    <ul class="sub-menu-container">
+                                    {{-- <ul class="sub-menu-container">
                                         <li class="menu-item">
                                             <a class="menu-link" href="{{ url('profil') }}">
                                                 <div><i class="icon-stack"></i>Profil</div>
@@ -125,7 +125,7 @@
                                                 <div><i class="icon-stack"></i>Arsip Dokumen</div>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                                 <li class="menu-item">
                                     <a class="menu-link" href="{{ url('perencanaan_bisnis_bank') }}">

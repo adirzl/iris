@@ -17,36 +17,61 @@
                                 <li>{{ $item->name }}</li>
                             @endforeach --}}
                             <div class="table-responsive">
-                                <table class="table table-bordered mb-0">
-                                    <thead style="text-align: center">
+                                <table class="table table-bordered table-striped mb-0">
+                                    <thead>
                                         <tr>
+                                            <th>Actions</th>
                                             <th>Nomor</th>
                                             <th>Nama Dokumen</th>
                                             <th>Kategori</th>
                                             <th>Type</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="text-align: center">
+                                    <tbody>
                                         <tr>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info">Actions</button>
+                                                    <button type="button"
+                                                        class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">View</a>
+                                                        <a class="dropdown-item" href="#">Download</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td>1</td>
-                                            <td>$nama_dokumen</td>
-                                            <td>$kategori</td>
-                                            <td>$type</td>
-                                            <td>$tanggal</td>
-                                            <td>$status</td>
-                                            <td>$action</td>
+                                            <td>Kajian stabilitas keuangan</td>
+                                            <td>docx</td>
+                                            <td>no 32 November 2020</td>
+                                            <td>20-01-2021</td>
+                                            <td><span class="badge bg-success" style="color: white">Public</span></td>
                                         </tr>
                                         <tr>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info">Actions</button>
+                                                    <button type="button"
+                                                        class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">Request</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td>2</td>
-                                            <td>$nama_dokumen</td>
-                                            <td>$kategori</td>
-                                            <td>$type</td>
-                                            <td>$tanggal</td>
-                                            <td>$status</td>
-                                            <td>$action</td>
+                                            <td>RBB Bank bjb 2021</td>
+                                            <td>pdf</td>
+                                            <td>no 12 Desember 2020</td>
+                                            <td>20-01-2021</td>
+                                            <td><span class="badge bg-warning">Private</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -59,7 +84,7 @@
                             <div class="widget clearfix">
                                 {{ Form::text('keyword', null, ['class' => 'form-control', 'id' => 'keyword', 'placeholder' => 'Pencarian']) }}
                                 <br>
-                                <button class="btn btn-secondary">Cari</button>
+                                <button class="btn btn-primary">Cari</button>
                                 <div style="margin-top: 10%">
                                     <label>File Type</label>
                                     <li>{{ Form::checkbox('fileType[]', true, null) }} [name]</li>
