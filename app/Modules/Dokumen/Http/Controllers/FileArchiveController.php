@@ -1,10 +1,11 @@
 <?php
 
-namespace Modules\FileType\Http\Controllers;
+namespace Modules\Dokumen\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Modules\FileType\Entities\FileArchive;
-use Modules\FileType\Http\Requests\FileArchiveeRequest;
+use Modules\Dokumen\Entities\FileArchive;
+use Modules\Dokumen\Http\Requests\FileArchiveRequest;
+use Modules\UnitKerja\Entities\UnitKerja;
 use Carbon\Carbon;
 
 class FileArchiveController extends \App\Http\Controllers\Controller
@@ -15,8 +16,10 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      */
     public function index(Request $request)
     {
+        
         $data = FileArchive::fetch($request);
-        return view('FileType::FileArchive.default', compact('data'));
+        
+        return view('Dokumen::FileArchive.default', compact('data'));
     }
 
     /**
@@ -24,8 +27,9 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        $opsi = new FileType;
-        return view('FileType::FileType.form', compact('opsi'));
+        $d = new FileArchive;
+        $unitkerja = to_dropdown(UnitKerja::where('status',1)->get(),'kode','nama');
+        return view('Dokumen::FileArchive.form', compact('d','unitkerja'));
     }
 
     /**

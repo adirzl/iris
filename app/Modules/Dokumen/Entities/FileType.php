@@ -1,6 +1,7 @@
 <?php
 
-namespace Modules\FileType\Entities;
+namespace Modules\Dokumen\Entities;
+use Illuminate\Support\Facades\DB;
 
 class FileType extends \App\Entities\Model
 {
@@ -31,16 +32,10 @@ class FileType extends \App\Entities\Model
      */
     public function scopeFetch($query, $request, $export = false)
     {
-        if ($request->periode) {
-            $query->where('periode', 'like', '%' . $request->periode . '%');
-        }
-
-        if ($request->nama_perusahaan) {
-            $query->where('nama_perusahaan', 'like', '%' . $request->nama_perusahaan . '%');
-        }
-
-        $q = $query->select(array_merge($this->fillable, ['id', 'user', 'created_at', 'updated_at', 'status_kuisioner', 'periode', 'status', 'modal_inti', 'nama_perusahaan', 'status', 'modal_inti', 'nama_perusahaan']))
-            ->orderBy('created_at');
+        $q = DB::table('app_filetype')
+            ->join('app_unit_kerja', 'app_filetype.unitkerja_kode', '=', 'app_unit_kerja.kode')
+            ->select(DB::raw('distinct app_filetype.unitkerja_kode'), 'app_unit_kerja.nama')
+            ->orderBy('app_unit_kerja.nama');
 
         if ($export === false) {
             if ($request->has('per_page')) {
@@ -52,4 +47,7 @@ class FileType extends \App\Entities\Model
 
         return $q->get();
     }
+
+    
+
 }

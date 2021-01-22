@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\FileType\Providers;
+namespace Modules\Dokumen\Providers;
 
 class AppServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
      * @var string
      */
-    protected $viewNamespace = 'FileType';
+    protected $viewNamespace = 'Dokumen';
 
     /**
      * @return void

@@ -66,9 +66,10 @@ class CreateAppTables extends Migration
 
         Schema::create('app_filearchive', function(Blueprint $table){
             $table->uuid('id')->primary();
-            $table->string('name', 128);
+            $table->string('unitkerja_kode', 4);
+            $table->uuid('filetype');
+            $table->string('version', 5);
             $table->string('path', 255);
-            $table->uuid('fileType');
             $table->smallInteger('status');
             $table->timestamps();
             $table->softDeletes();

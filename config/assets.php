@@ -68,7 +68,9 @@ return [
 		 *
 		 * @var string
 		 */
-		'js_dir' => 'chartjs/code',
+		// 'js_dir' => 'chartjs/code',
+		
+		'js_dir' => env('APP_URL') . '/js',
 
 		/**
 		 * Directory for local package assets.

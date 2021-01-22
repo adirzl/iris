@@ -43,12 +43,12 @@ trait AuthenticatesUsers
                 return false;
             }
 
-            if (!is_null($user->session_id) && $user->session_id !== Session::getId()) {
-                $this->guard()->logout();
-                $this->sendMultipleLoggedInNotAllowedResponse($request);
+            // if (!is_null($user->session_id) && $user->session_id !== Session::getId()) {
+            //     $this->guard()->logout();
+            //     $this->sendMultipleLoggedInNotAllowedResponse($request);
 
-                return false;
-            }
+            //     return false;
+            // }
 
             return true;
         }
@@ -65,7 +65,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        $user->session_id = Session::getId();
+        // $user->session_id = Session::getId();
         $user->last_activity = now();
         $user->save();
     }

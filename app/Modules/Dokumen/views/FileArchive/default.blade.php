@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Dokumen - Tipe dan Nama')
+@section('title', 'Dokumen - Upload')
 @section('content')
     @include('kelola::banner.filter')
     @if(count($data))
@@ -46,7 +46,7 @@
         </div>
     @else
         <div class="alert alert-warning">
-            {!! trans('label.no_data_with_link', ['label' => 'Dokumen - Tipe dan Nama', 'uri' => route('FileType.create')]) !!}
+            {!! trans('label.no_data_with_link', ['label' => 'Dokumen - Upload', 'uri' => route('dokumen-filearchive.create')]) !!}
         </div>
     @endif
 @endsection

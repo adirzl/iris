@@ -12,13 +12,13 @@ if ($segment !== 'create' ) { $title = 'edit'; $method = 'put'; $action = ['kelo
         {{ Form::fgText('Title', 'title', $kelola_banner->title, ['class' => 'form-control'], null, 'text', true) }}
         {{ Form::fgText('Description', 'description', $kelola_banner->description, ['class' => 'form-control', 'cols' => '20', 'rows' => '5'], null, 'textarea', true) }}
         <div class="form-group row">
-            <label for="" class="col-md-2 col-form-label">Upload Image</label>
+            <label for="" class="col-md-3 col-form-label">Upload Image</label>
             @isset($kelola_banner->image)
             <div class="col-md-5 text-center">
                 <img src="{{ asset('banner/' . $kelola_banner->image) }}" alt="logo" width="500" height="200" style="margin-top: 0%">
             </div>
             @endisset
-            <div class="col-md-{{ isset($kelola_banner->image) ? '5' : '10'}}">
+            <div class="col-md-{{ isset($kelola_banner->image) ? '5' : '9'}}">
                 {!! Form::file($image, ['class' => 'form-control dropify']) !!}
             </div>
         </div>

@@ -166,11 +166,11 @@ class PermissionsTablesSeeder extends Seeder
                 'label' => 'Dokumen', 'uri' => '#', 'icon' => 'fas fa-money-check-alt', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '10', 'childs' => [
                     [
-                        'label' => 'Tipe Dan Nama', 'uri' => 'FileType', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+                        'label' => 'Tipe Dan Nama', 'uri' => 'dokumen-filetype', 'icon' => 'fas fa-file-alt', 'visible' => 1,
                         'sequence' => '10.1',
                     ],
                     [
-                        'label' => 'Upload', 'uri' => 'FileArchive', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+                        'label' => 'Upload', 'uri' => 'dokumen-filearchive', 'icon' => 'fas fa-file-alt', 'visible' => 1,
                         'sequence' => '10.2',
                     ],
                 ],

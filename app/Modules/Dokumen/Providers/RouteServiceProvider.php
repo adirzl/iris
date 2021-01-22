@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\FileType\Providers;
+namespace Modules\Dokumen\Providers;
 
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends \Illuminate\Foundation\Support\Providers\RouteServiceProvider
 {
-    protected $moduleNamespace = 'Modules\FileType\Http\Controllers';
+    protected $moduleNamespace = 'Modules\Dokumen\Http\Controllers';
 
     /**
      * Called before routes are registered.

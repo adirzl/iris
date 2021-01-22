@@ -22,6 +22,7 @@ return [
     'action' => 'Aksi',
     'no_action' => '<i class="ti-na"></i> Tidak ada aksi',
     'last_modified' => 'Waktu Modifikasi',
+    'create_message' => 'Tambah `:label`',
     'update_message' => 'Ubah `:label`',
     'delete_message' => 'Hapus `:label`',
     'show_message' => 'Lihat Detail `:label`',
