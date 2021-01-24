@@ -3,8 +3,8 @@
 @section('content')
     <div class="card card-success">
         <div class="card-body">
-            {{ Form::fgText('User', 'user_id', $data->user_id, ['class' => 'form-control', 'disabled'], null, 'text', true) }}
-            {{ Form::fgText('File', 'filearchive_id', $data->filearchive_id, ['class' => 'form-control', 'disabled'], null, 'text', true) }}
+            {{ Form::fgText('User', 'user_id', $data->user->profile->nama, ['class' => 'form-control', 'disabled'], null, 'text', true) }}
+            {{ Form::fgText('File', 'filearchive_id', $data->filearchive->filetype->name, ['class' => 'form-control', 'disabled'], null, 'text', true) }}
             {{ Form::fgText('Description', 'description', $data->description, ['class' => 'form-control', 'disabled'], null, 'textarea', true) }}
         </div>
     </div>

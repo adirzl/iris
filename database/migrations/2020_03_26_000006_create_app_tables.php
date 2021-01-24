@@ -67,19 +67,19 @@ class CreateAppTables extends Migration
         Schema::create('app_filearchive', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('unitkerja_kode', 4);
-            $table->uuid('filetype');
+            $table->uuid('filetype_id');
             $table->string('version', 5);
             $table->string('path', 255);
             $table->smallInteger('status');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('fileType')
+            $table->foreign('filetype_id')
                 ->references('id')
                 ->on('app_filetype')
                 ->onDelete('cascade');
         });
-        
+
         Schema::create('app_artikel', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('title',255)->nullable();
@@ -89,7 +89,7 @@ class CreateAppTables extends Migration
             $table->integer('status');
             $table->timestamps();
         });
-        
+
         Schema::create('app_banner', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('title',255)->nullable();
@@ -122,7 +122,7 @@ class CreateAppTables extends Migration
             $table->integer('tahun')->nullable();
             $table->timestamps();
         });
-        
+
         Schema::create('app_local_user', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('username',255)->nullable();
@@ -130,7 +130,7 @@ class CreateAppTables extends Migration
             $table->integer('status');
             $table->timestamps();
         });
-        
+
         Schema::create('app_penilaian', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('user',255)->nullable();
@@ -178,7 +178,7 @@ class CreateAppTables extends Migration
             $table->timestamps();
         });
 
-        
+
         Schema::create('app_regulasi', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('title',255)->nullable();
@@ -206,8 +206,6 @@ class CreateAppTables extends Migration
         });
 
 
-        
-          
 
 
 
@@ -222,7 +220,9 @@ class CreateAppTables extends Migration
 
 
 
-    }        
+
+
+    }
 
 
 

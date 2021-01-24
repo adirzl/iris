@@ -29,7 +29,7 @@ class FileArchive extends \App\Entities\Model
 
         $q = $query->select(array_merge($this->fillable, ['id', 'unitkerja_kode', 'filetype', 'version', 'path','status'
         ]))->orderBy('created_at','desc');
-        
+
         if ($export === false) {
             if ($request->has('per_page')) {
                 return $request->per_page === 'All' ? $q->get() : $q->paginate($request->per_page);
@@ -39,6 +39,10 @@ class FileArchive extends \App\Entities\Model
         }
 
         return $q->get();
+    }
+
+    public function filetype(){
+        return $this->belongsTo(FileType::class, 'filetype_id');
     }
 
 }

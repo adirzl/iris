@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Request File')
+@section('title', 'Evaluasi')
 @section('content')
     {{-- @include('opsi::filter') --}}
     @if(count($data))
@@ -9,10 +9,9 @@
                     <thead>
                     <tr>
                         <th>{{ __('label.action') }}</th>
-                        <th>User</th>
-                        <th>File</th>
-                        <th>Description</th>
-                        <th>Status</th>
+                        <th>Judul Riset</th>
+                        <th>Unit Kerja Penilai</th>
+                        <th>Created at</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,18 +22,17 @@
                                     $actions = null;
                                     $actions = [
                                         [
-                                            'url' => 'requestfile.approval', 'permission' => 'approval requestfile', 'attributes' => [
-                                                'rel' => 'content', 'title' => __('label.approval_message', ['label' => $d->created_at])
-                                            ], 'label' => __('label.approve_message', ['label' => $d->user->profile->nama]),
+                                            'url' => 'evaluasi.show', 'permission' => 'show evaluasi', 'attributes' => [
+                                                'rel' => 'content', 'title' => __('label.show_message', ['label' => $d->risettitle])
+                                            ], 'label' => __('label.show_message', ['label' => $d->risettitle]),
                                         ],
                                     ];
                                 @endphp
                                 {!! Html::linkActions($actions, $d->id) !!}
                             </td>
-                            <td>{{ $d->user->profile->nama }}</td>
-                            <td>{{ $d->filearchive->filetype->name }}</td>
-                            <td>{{ $d->description }}</td>
-                            <td>{{ isset($d->status) ? $status_requestfile[$d->status] : '' }}</td>
+                            <td>{{ $d->risettitle }}</td>
+                            <td>{{ $d->unitkerja->nama }}</td>
+                            <td>{{ $d->created_at }}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -446,6 +446,44 @@ class OptionsTablesSeeder extends Seeder
                     ],
                 ]
             ],
+            [
+                'id' => Str::uuid(), 'name' => 'approval', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => 1, 'value' => __('label.approve'), 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 2, 'value' => __('label.Reject'), 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                ]
+            ],
+            [
+                'id' => Str::uuid(), 'name' => 'risetquality', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => 1, 'value' => 'Sangat tidak puas', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 2, 'value' => 'Tidak puas', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 3, 'value' => 'Cukup puas', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 4, 'value' => 'Puas', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 5, 'value' => 'Sangat puas', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                ]
+            ],
         ];
 
         foreach ($options as $option) {

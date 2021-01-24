@@ -71,7 +71,7 @@ class PermissionsTablesSeeder extends Seeder
                 'label' => 'Setting', 'uri' => 'setting', 'icon' => 'fa fa-cogs', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '4', 'childs' => []
             ],
-            
+
             [
                 'label' => 'Kelola Landing Page', 'uri' => '#', 'icon' => 'fas fa-pencil-alt ', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '5', 'childs' => [
@@ -174,6 +174,14 @@ class PermissionsTablesSeeder extends Seeder
                         'sequence' => '10.2',
                     ],
                 ],
+            ],
+            [
+                'label' => 'Request', 'uri' => 'requestfile', 'icon' => 'fas fa-tasks', 'parent_module' => null,
+                'visible' => 1, 'sequence' => '11', 'childs' => []
+            ],
+            [
+                'label' => 'Evaluasi', 'uri' => 'evaluasi', 'icon' => 'fa fa-pencil-alt', 'parent_module' => null,
+                'visible' => 1, 'sequence' => '12', 'childs' => []
             ],
         ];
 

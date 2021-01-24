@@ -1,21 +1,22 @@
 <?php
 
-namespace Modules\RequestFile\Entities;
+namespace Modules\Evaluasi\Entities;
 
 use Modules\Dokumen\Entities\FileArchive;
+use Modules\UnitKerja\Entities\UnitKerja;
 use Modules\User\Entities\User;
 
-class Requestfile extends \App\Entities\Model
+class Evaluasidetail extends \App\Entities\Model
 {
     /**
      * @var string
      */
-    protected $table = 'app_requestfile';
+    protected $table = 'app_evaluasi_detail';
 
     /**
      * @var array
      */
-    protected $fillable = ['id', 'user_id', 'filearchive_id', 'description', 'status', 'rejectnote'];
+    protected $fillable = ['id', 'evaluasi_id', 'aspect', 'description', 'created_at'];
 
     /**
      * @var array
@@ -54,12 +55,9 @@ class Requestfile extends \App\Entities\Model
         return $q->paginate(config('app.display_per_page'));
     }
 
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
+    public function unitkerja(){
+        return $this->belongsTo(UnitKerja::class, 'unitkerja_kode');
     }
 
-    public function filearchive(){
-        return $this->belongsTo(FileArchive::class, 'filearchive_id');
-    }
 
 }

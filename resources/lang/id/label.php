@@ -9,6 +9,8 @@ return [
     'show' => 'Detail',
     'delete' => 'Hapus',
     'upload' => 'Unggah',
+    'approve' => 'Setuju',
+    'Reject' => 'Tolak',
     'show_records' => 'Menampilkan <strong>:data</strong> data dari total <strong>:total</strong> data.',
     /** Form **/
     'filter' => 'Pencarian',

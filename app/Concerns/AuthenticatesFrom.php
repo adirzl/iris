@@ -67,7 +67,7 @@ trait AuthenticatesFrom
                 ]);
                 $user = User::findByUsername($credentials[$username]);
                 $user->profile()->create([
-                    'nama' => $res->nama, 
+                    'nama' => $res->nama,
                     'nip' => $res->nip,
                     'hp' => trim($res->hp),
                 ]);
