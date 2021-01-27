@@ -20,7 +20,7 @@ use Modules\Kuisioner\Entities\Pertanyaan;
 use Knp\Snappy\Pdf;
 use Modules\FileType\Entities\FileArchive;
 use Modules\FileType\Entities\FileType;
-use Modules\HCS\Entities\UnitKerja;
+use Modules\UnitKerja\Entities\UnitKerja;
 use Validator;
 
 class LandingController extends Controller
@@ -38,9 +38,9 @@ class LandingController extends Controller
     }
 
 
-    public function detail($id){
-        $unitkerja = UnitKerja::findOrFail($id);
-        dd($unitkerja);
+    public function detail($id)
+    {
+        $unitkerja = UnitKerja::where('kode', $id)->get();
         $fileType = FileType::where('unitkerja_kode', $id)->get();
         $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType')->where('ft.unitkerja_kode', $id)->get();
         return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
@@ -51,11 +51,34 @@ class LandingController extends Controller
         return view('auth.login');
     }
 
-    public function tentang_kk()
+    public function profil()
     {
-        $data = Profil::get()->where('status', 1);
-        foreach ($data as $v)
-            return view('landing.tentang_kk', compact('v'));
+        return view('landing.profil');
+    }
+
+    public function visi_misi()
+    {
+        return view('landing.visi_misi');
+    }
+
+    public function sekapur_sirih()
+    {
+        return view('landing.sekapur_sirih');
+    }
+
+    public function arsip_dokumen()
+    {
+        return view('landing.arsip_dokumen');
+    }
+
+    public function perencanaan_bisnis_bank()
+    {
+        return view('landing.perencanaan_bisnis_bank');
+    }
+
+    public function pengembangan_organisasi()
+    {
+        return view('landing.pengembangan_organisasi');
     }
 
     public function sekilas_kk()
@@ -95,13 +118,6 @@ class LandingController extends Controller
         return view('landing.tugas_wewenang_kk', compact('data', 'data2', 'jml', 'jml2', 'i', 'j'));
     }
 
-    public function tentang_kinke()
-    {
-        $data = Profil::get()->where('status', 4);
-        foreach ($data as $v)
-            return view('landing.tentang_kinke', compact('v'));
-    }
-
     public function report_sumber()
     {
         return view('landing.report_sumber_data');
@@ -109,7 +125,7 @@ class LandingController extends Controller
 
     public function kajian_kinke()
     {
-        $data = Laporan::orderBy('created_at','DESC')->where('status', 1)->get();
+        $data = Laporan::orderBy('created_at', 'DESC')->where('status', 1)->get();
         return view('landing.kajian_kinke', compact('data'));
     }
 
@@ -200,7 +216,7 @@ class LandingController extends Controller
     {
         $data = Penilaian::where('status_kuisioner', 1)->where('status', 2)->fetch($request);
         $i = 1;
-        return view('landing.laporan_kuisioner_manrisk', compact('data','i'));
+        return view('landing.laporan_kuisioner_manrisk', compact('data', 'i'));
     }
 
     /**
@@ -251,7 +267,7 @@ class LandingController extends Controller
     {
         $data = Penilaian::where('status_kuisioner', 2)->where('status', 2)->fetch($request);
         $i = 1;
-        return view('landing.laporan_kuisioner_kepatuhan',compact('data','i'));
+        return view('landing.laporan_kuisioner_kepatuhan', compact('data', 'i'));
     }
 
     public function report_kuisioner_audit()

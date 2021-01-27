@@ -33,8 +33,7 @@
         </div>
     </section>
 
-    <!-- Content
-                                                                                    ============================================= -->
+    <!-- Content ============================================= -->
     <section id="content">
         <div class="content-wrap">
 
@@ -136,7 +135,7 @@
     <section id="page-title">
         <div class="container clearfix">
             {{-- <h1>{{ strtoupper($unitkerja->name) }}</h1> --}}
-            <h1>[unitkerja_name]</h1>
+            <h1>Arsip Dokumen</h1>
             <span>Deskripsi singkat judul</span>
         </div>
     </section>
