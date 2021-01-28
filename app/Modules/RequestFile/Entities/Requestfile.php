@@ -2,6 +2,9 @@
 
 namespace Modules\RequestFile\Entities;
 
+use Modules\Dokumen\Entities\FileArchive;
+use Modules\User\Entities\User;
+
 class Requestfile extends \App\Entities\Model
 {
     /**
@@ -51,5 +54,12 @@ class Requestfile extends \App\Entities\Model
         return $q->paginate(config('app.display_per_page'));
     }
 
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function filearchive(){
+        return $this->belongsTo(FileArchive::class, 'filearchive_id');
+    }
 
 }

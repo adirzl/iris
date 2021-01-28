@@ -37,5 +37,11 @@ class UnitKerja extends \App\Entities\Model
      * @return \Illuminate\Database\Eloquent\Collection
      */
 
+    public function filetype()
+    {
+        return $this->hasMany('App\Modules\Dokumen\Entities\Filetype','kode','unitkerja_kode')->orderBy('name');
+    }
+
+
 
 }

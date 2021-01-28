@@ -12,6 +12,7 @@
                         <th>User</th>
                         <th>File</th>
                         <th>Description</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,15 +25,16 @@
                                         [
                                             'url' => 'requestfile.approval', 'permission' => 'approval requestfile', 'attributes' => [
                                                 'rel' => 'content', 'title' => __('label.approval_message', ['label' => $d->created_at])
-                                            ], 'label' => __('label.approval_message', ['label' => $d->created_at]),
+                                            ], 'label' => __('label.approve_message', ['label' => $d->user->profile->nama]),
                                         ],
                                     ];
                                 @endphp
                                 {!! Html::linkActions($actions, $d->id) !!}
                             </td>
-                            <td>{{ $d->user_id }}</td>
-                            <td>{{ $d->filearchive_id }}</td>
+                            <td>{{ $d->user->profile->nama }}</td>
+                            <td>{{ $d->filearchive->filetype->name }}</td>
                             <td>{{ $d->description }}</td>
+                            <td>{{ isset($d->status) ? $status_requestfile[$d->status] : '' }}</td>
                         </tr>
                     @endforeach
                     </tbody>

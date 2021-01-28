@@ -20516,7 +20516,6 @@ $(function() {
     });
 
     $('input[name="check_all"]').on('click', function() {
-        var isChecked = $(this).is(":checked");
         $('input[name="check[]"]').each(function() {
             $(this).prop("checked", isChecked);
         });
@@ -21719,4 +21718,46 @@ $(document).ready(function() {
             $("#lcr").hide();
         }
     });
+
+    
+$('.unitkerja_kode_upload').on('change',function()
+{
+    var unitkerja_kode =$(this).val();
+        $.ajax({
+            url: 'dokumen-filetype-list/'+unitkerja_kode,
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            // data: 'id='+produk,
+            success: function (response) {
+                if (response) {
+                    
+                $('#filetype').empty()
+                $('#filetype').append('<option value="">-Pilih Satu-</option>'); 
+                
+                $.each(response['data'],function(index)
+                    {
+                    var value=response['data'][index]['id'];
+                    var text =response['data'][index]['name'];
+                        $('#filetype').append('<option value=' + value + '>' + text + '</option>'); // return empty
+                    });
+
+                } 
+                // else if (data['error']) {
+                //     alert(data['error']);
+                // } else {
+                //     alert('Whoops Something went wrong!!');
+                // }
+            },
+            error: function (data) {
+                alert(data.responseText);
+            }
+        });
+    
+  
+}
+);
+        
+
+
+
 });

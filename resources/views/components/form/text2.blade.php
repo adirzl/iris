@@ -1,6 +1,6 @@
 <div class="form-group {{ $layout ? 'row' : '' }}">
     @if($layout)
-        <div class="col-md-10">
+        <div class="col-md-9">
             {{ Form::$type($name, $value, $attributes) }}
             @if(!is_null($help))
                 <small class="form-text text-muted">{{ $help }}</small>

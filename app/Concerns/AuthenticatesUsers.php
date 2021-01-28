@@ -19,13 +19,12 @@ trait AuthenticatesUsers
     protected function attemptLogin(Request $request)
     {
         $credentials = $this->credentials($request);
-
         if (strlen($credentials[$this->username()]) == 4 && config('auth.force_local') === false) {
             $authenticated = $this->uim($credentials);
         } else {
+
             $authenticated =  $this->guard()->attempt($credentials, $request->filled('remember'));
         }
-
         if ($authenticated) {
             $user = \Modules\User\Entities\User::findByUsername($credentials[$this->username()]);
             $this->guard()->login($user);
@@ -44,12 +43,12 @@ trait AuthenticatesUsers
                 return false;
             }
 
-            if (!is_null($user->session_id) && $user->session_id !== Session::getId()) {
-                $this->guard()->logout();
-                $this->sendMultipleLoggedInNotAllowedResponse($request);
+            // if (!is_null($user->session_id) && $user->session_id !== Session::getId()) {
+            //     $this->guard()->logout();
+            //     $this->sendMultipleLoggedInNotAllowedResponse($request);
 
-                return false;
-            }
+            //     return false;
+            // }
 
             return true;
         }
@@ -66,7 +65,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        $user->session_id = Session::getId();
+        // $user->session_id = Session::getId();
         $user->last_activity = now();
         $user->save();
     }

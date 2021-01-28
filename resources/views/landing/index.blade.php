@@ -12,8 +12,9 @@
                             <div class="swiper-slide dark">
                                 <div class="container">
                                     <div class="slider-caption slider-caption-left">
-                                        <h2 data-animate="fadeInUp">[judul]</h2>
-                                        <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">[deskripsi]
+                                        <h2 data-animate="fadeInUp">DMA</h2>
+                                        <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Documents
+                                            Management Application
                                         </p>
                                     </div>
                                 </div>
@@ -46,10 +47,10 @@
                                 <em>seluruh dokumentasi</em> <br>dan <em>tata kelola dokumen</em> di lingkungan
                                 <em>Bank bjb</em></span>
                         </div>
-                        <div class="col-12 col-lg-auto mt-4 mt-lg-0">
+                        {{-- <div class="col-12 col-lg-auto mt-4 mt-lg-0">
                             <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank"
                                 class="button button-large button-circle m-0">Login</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -80,7 +81,8 @@
 
                         <div id="snav-content1">
                             <h3>Profil</h3>
-                            <img class="alignright img-responsive" src="#" alt="Image">
+                            <img class="alignright img-responsive" src="http://127.0.0.1:8080/img/logo.png" width="30%"
+                                height="30%" alt="Image">
 
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, ex, inventore, tenetur, repellat
                             ipsam soluta libero amet nam aspernatur perspiciatis quos praesentium et debitis ea odit enim
@@ -111,7 +113,7 @@
                         </div>
 
                         <div id="snav-content3">
-                            <img class="alignleft img-responsive" src="#" alt="Image">
+                            <img class="alignleft img-responsive" src="http://127.0.0.1:8080/img/team2.png" alt="Image">
                             <h3>Sekapur Sirih Pimpinan Divisi</h3>
                             Dolor aperiam modi aliquam dolores consequatur error commodi ad
                             eius incidunt! Libero, odio incidunt ullam sunt fugiat? Laboriosam, perferendis, debitis, harum
@@ -149,36 +151,61 @@
                                 <li>{{ $item->name }}</li>
                             @endforeach --}}
                             <div class="table-responsive">
-                                <table class="table table-bordered mb-0">
+                                <table class="table table-bordered table-striped mb-0">
                                     <thead>
                                         <tr>
+                                            <th>Actions</th>
                                             <th>Nomor</th>
                                             <th>Nama Dokumen</th>
                                             <th>Kategori</th>
                                             <th>Type</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info">Actions</button>
+                                                    <button type="button"
+                                                        class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">View</a>
+                                                        <a class="dropdown-item" href="#">Download</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td>1</td>
-                                            <td>$nama_dokumen</td>
-                                            <td>$kategori</td>
-                                            <td>$type</td>
-                                            <td>$tanggal</td>
-                                            <td>$status</td>
-                                            <td>$action</td>
+                                            <td>Kajian stabilitas keuangan</td>
+                                            <td>docx</td>
+                                            <td>no 32 November 2020</td>
+                                            <td>20-01-2021</td>
+                                            <td><span class="badge bg-success" style="color: white">Public</span></td>
                                         </tr>
                                         <tr>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info">Actions</button>
+                                                    <button type="button"
+                                                        class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">Request</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td>2</td>
-                                            <td>$nama_dokumen</td>
-                                            <td>$kategori</td>
-                                            <td>$type</td>
-                                            <td>$tanggal</td>
-                                            <td>$status</td>
-                                            <td>$action</td>
+                                            <td>RBB Bank bjb 2021</td>
+                                            <td>pdf</td>
+                                            <td>no 12 Desember 2020</td>
+                                            <td>20-01-2021</td>
+                                            <td><span class="badge bg-warning">Private</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -191,7 +218,7 @@
                             <div class="widget clearfix">
                                 {{ Form::text('keyword', null, ['class' => 'form-control', 'id' => 'keyword', 'placeholder' => 'Pencarian']) }}
                                 <br>
-                                <button class="btn btn-secondary">Cari</button>
+                                <button class="btn btn-primary">Cari</button>
                                 <div style="margin-top: 10%">
                                     <label>File Type</label>
                                     <li>{{ Form::checkbox('fileType[]', true, null) }} [name]</li>

@@ -9,6 +9,8 @@ return [
     'show' => 'Detail',
     'delete' => 'Hapus',
     'upload' => 'Unggah',
+    'approve' => 'Setuju',
+    'Reject' => 'Tolak',
     'show_records' => 'Menampilkan <strong>:data</strong> data dari total <strong>:total</strong> data.',
     /** Form **/
     'filter' => 'Pencarian',
@@ -22,6 +24,7 @@ return [
     'action' => 'Aksi',
     'no_action' => '<i class="ti-na"></i> Tidak ada aksi',
     'last_modified' => 'Waktu Modifikasi',
+    'create_message' => 'Tambah `:label`',
     'update_message' => 'Ubah `:label`',
     'delete_message' => 'Hapus `:label`',
     'show_message' => 'Lihat Detail `:label`',

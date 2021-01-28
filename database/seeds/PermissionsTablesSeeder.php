@@ -71,91 +71,7 @@ class PermissionsTablesSeeder extends Seeder
                 'label' => 'Setting', 'uri' => 'setting', 'icon' => 'fa fa-cogs', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '4', 'childs' => []
             ],
-            // [
-            //     'label' => 'Management API', 'uri' => '#', 'icon' => 'fas fa-tram', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '5', 'childs' => [
-            //         [
-            //             'label' => 'Datasource', 'uri' => 'datasource', 'icon' => 'fas fa-database', 'visible' => 1,
-            //             'sequence' => '5.1',
-            //         ],
-            //         [
-            //             'label' => 'Log Transaksi', 'uri' => 'log-transaksi', 'icon' => 'fas fa-clipboard-list', 'visible' => 1,
-            //             'sequence' => '5.2',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Data HCS', 'uri' => '#', 'icon' => 'fab fa-sourcetree', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '6', 'childs' => [
-            //         [
-            //             'label' => 'Unit Kerja (HCS)', 'uri' => 'unit-kerja-hcs', 'icon' => 'fas fa-building', 'visible' => 1,
-            //             'sequence' => '6.1',
-            //         ],
-            //         [
-            //             'label' => 'Grade (HCS)', 'uri' => 'grade-hcs', 'icon' => 'fab fa-google', 'visible' => 1,
-            //             'sequence' => '6.2',
-            //         ],
-            //         [
-            //             'label' => 'Jabatan (HCS)', 'uri' => 'jabatan-hcs', 'icon' => 'fab fa-hackerrank', 'visible' => 1,
-            //             'sequence' => '6.3',
-            //         ],
-            //         [
-            //             'label' => 'Pegawai (HCS)', 'uri' => 'pegawai-hcs', 'icon' => 'fa fa-address-card', 'visible' => 1,
-            //             'sequence' => '6.4',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Data UIM', 'uri' => '#', 'icon' => 'fas fa-id-badge', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '7', 'childs' => [
-            //         [
-            //             'label' => 'Unit Kerja (UIM)', 'uri' => 'unit-kerja-uim', 'icon' => 'fas fa-building', 'visible' => 1,
-            //             'sequence' => '7.1',
-            //         ],
-            //         [
-            //             'label' => 'Pegawai (UIM)', 'uri' => 'pegawai-uim', 'icon' => 'fa fa-address-card', 'visible' => 1,
-            //             'sequence' => '7.4',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Rule Hak Akses', 'uri' => 'rule-hak-akses', 'icon' => 'fas fa-universal-access', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '8', 'childs' => []
-            // ],
-            // [
-            //     'label' => 'Limit Otorisasi', 'uri' => 'limit-otorisasi', 'icon' => 'fas fa-money-check', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '9', 'childs' => []
-            // ],
-            // [
-            //     'label' => 'Registrasi', 'uri' => '#', 'icon' => 'far fa-registered', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '10', 'childs' => [
-            //         [
-            //             'label' => 'Aplikasi', 'uri' => 'registrasi-aplikasi', 'icon' => 'fas fa-desktop', 'visible' => 1,
-            //             'sequence' => '10.1',
-            //         ],
-            //         [
-            //             'label' => 'Fungsi', 'uri' => 'registrasi-aplikasi-fungsi', 'icon' => 'fas fa-user-shield', 'visible' => 1,
-            //             'sequence' => '10.2',
-            //         ],
-            //         [
-            //             'label' => 'Server', 'uri' => 'registrasi-server', 'icon' => 'fas fa-server', 'visible' => 1,
-            //             'sequence' => '10.3',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Sinkronisasi', 'uri' => '#', 'icon' => 'fas fa-sync', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '11', 'childs' => [
-            //         [
-            //             'label' => 'Pegawai', 'uri' => 'sinkronisasi-pegawai', 'icon' => 'fas fa-id-card', 'visible' => 1,
-            //             'sequence' => '11.1',
-            //         ],
-            //         [
-            //             'label' => 'Limit', 'uri' => 'sinkronisasi-limit', 'icon' => 'fas fa-exchange-alt', 'visible' => 1,
-            //             'sequence' => '11.2',
-            //         ],
-            //     ],
-            // ],
+
             [
                 'label' => 'Kelola Landing Page', 'uri' => '#', 'icon' => 'fas fa-pencil-alt ', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '5', 'childs' => [
@@ -189,61 +105,83 @@ class PermissionsTablesSeeder extends Seeder
                     ],
                 ],
             ],
+            // [
+            //     'label' => 'Kelola Kuisioner', 'uri' => '#', 'icon' => 'fas fa-list-ol ', 'parent_module' => null,
+            //     'visible' => 1, 'sequence' => '6', 'childs' => [
+            //         [
+            //             'label' => 'Pertanyaan', 'uri' => 'kuisioner-pertanyaan', 'icon' => 'fas fa-question-circle', 'visible' => 1,
+            //             'sequence' => '6.1',
+            //         ],
+            //         [
+            //             'label' => 'Hasil Penilaian', 'uri' => 'kuisioner-penilaian', 'icon' => 'fas fa-check-circle', 'visible' => 1,
+            //             'sequence' => '6.2',
+            //         ],
+            //     ],
+            // ],
+            // [
+            //     'label' => 'Isi Kuisioner', 'uri' => '#', 'icon' => 'fa fa-list-alt', 'parent_module' => null,
+            //     'visible' => 1, 'sequence' => '7', 'childs' => [
+            //         [
+            //             'label' => 'Manrisk', 'uri' => 'isikuisioner-manrisk', 'icon' => 'fas fa-file-archive', 'visible' => 1,
+            //             'sequence' => '7.1',
+            //         ],
+            //         [
+            //             'label' => 'Kepatuhan', 'uri' => 'isikuisioner-kepatuhan', 'icon' => 'fas fa-file-archive', 'visible' => 1,
+            //             'sequence' => '7.2',
+            //         ],
+            //     ],
+            // ],
+            // [
+            //     'label' => 'Pengawasan Audit', 'uri' => '#', 'icon' => 'fa fa-copy', 'parent_module' => null,
+            //     'visible' => 1, 'sequence' => '8', 'childs' => [
+            //         [
+            //             'label' => 'RKAT', 'uri' => 'rkat-audit', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+            //             'sequence' => '8.1',
+            //         ],
+            //         [
+            //             'label' => 'DMTL', 'uri' => 'dmtl-audit', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+            //             'sequence' => '8.2',
+            //         ],
+            //     ],
+            // ],
+            // [
+            //     'label' => 'Kinerja Keuangan', 'uri' => '#', 'icon' => 'fas fa-money-check-alt', 'parent_module' => null,
+            //     'visible' => 1, 'sequence' => '9', 'childs' => [
+            //         [
+            //             'label' => 'Target RBB', 'uri' => 'target-rbb', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+            //             'sequence' => '9.1',
+            //         ],
+            //         [
+            //             'label' => 'Realisasi RBB', 'uri' => 'realisasi-rbb', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+            //             'sequence' => '9.2',
+            //         ],
+            //         [
+            //             'label' => 'Kajian Kinerja Keuangan', 'uri' => 'kajian-kinerja', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+            //             'sequence' => '9.3',
+            //         ],
+            //     ],
+            // ],
+
             [
-                'label' => 'Kelola Kuisioner', 'uri' => '#', 'icon' => 'fas fa-list-ol ', 'parent_module' => null,
-                'visible' => 1, 'sequence' => '6', 'childs' => [
+                'label' => 'Dokumen', 'uri' => '#', 'icon' => 'fas fa-money-check-alt', 'parent_module' => null,
+                'visible' => 1, 'sequence' => '10', 'childs' => [
                     [
-                        'label' => 'Pertanyaan', 'uri' => 'kuisioner-pertanyaan', 'icon' => 'fas fa-question-circle', 'visible' => 1,
-                        'sequence' => '6.1',
+                        'label' => 'Tipe Dan Nama', 'uri' => 'dokumen-filetype', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+                        'sequence' => '10.1',
                     ],
                     [
-                        'label' => 'Hasil Penilaian', 'uri' => 'kuisioner-penilaian', 'icon' => 'fas fa-check-circle', 'visible' => 1,
-                        'sequence' => '6.2',
+                        'label' => 'Upload', 'uri' => 'dokumen-filearchive', 'icon' => 'fas fa-file-alt', 'visible' => 1,
+                        'sequence' => '10.2',
                     ],
                 ],
             ],
             [
-                'label' => 'Isi Kuisioner', 'uri' => '#', 'icon' => 'fa fa-list-alt', 'parent_module' => null,
-                'visible' => 1, 'sequence' => '7', 'childs' => [
-                    [
-                        'label' => 'Manrisk', 'uri' => 'isikuisioner-manrisk', 'icon' => 'fas fa-file-archive', 'visible' => 1,
-                        'sequence' => '7.1',
-                    ],
-                    [
-                        'label' => 'Kepatuhan', 'uri' => 'isikuisioner-kepatuhan', 'icon' => 'fas fa-file-archive', 'visible' => 1,
-                        'sequence' => '7.2',
-                    ],
-                ],
+                'label' => 'Request', 'uri' => 'requestfile', 'icon' => 'fas fa-tasks', 'parent_module' => null,
+                'visible' => 1, 'sequence' => '11', 'childs' => []
             ],
             [
-                'label' => 'Pengawasan Audit', 'uri' => '#', 'icon' => 'fa fa-copy', 'parent_module' => null,
-                'visible' => 1, 'sequence' => '8', 'childs' => [
-                    [
-                        'label' => 'RKAT', 'uri' => 'rkat-audit', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-                        'sequence' => '8.1',
-                    ],
-                    [
-                        'label' => 'DMTL', 'uri' => 'dmtl-audit', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-                        'sequence' => '8.2',
-                    ],
-                ],
-            ],
-            [
-                'label' => 'Kinerja Keuangan', 'uri' => '#', 'icon' => 'fas fa-money-check-alt', 'parent_module' => null,
-                'visible' => 1, 'sequence' => '9', 'childs' => [
-                    [
-                        'label' => 'Target RBB', 'uri' => 'target-rbb', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-                        'sequence' => '9.1',
-                    ],
-                    [
-                        'label' => 'Realisasi RBB', 'uri' => 'realisasi-rbb', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-                        'sequence' => '9.2',
-                    ],
-                    [
-                        'label' => 'Kajian Kinerja Keuangan', 'uri' => 'kajian-kinerja', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-                        'sequence' => '9.3',
-                    ],
-                ],
+                'label' => 'Evaluasi', 'uri' => 'evaluasi', 'icon' => 'fa fa-pencil-alt', 'parent_module' => null,
+                'visible' => 1, 'sequence' => '12', 'childs' => []
             ],
         ];
 

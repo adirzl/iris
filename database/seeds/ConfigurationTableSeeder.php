@@ -87,7 +87,7 @@ class ConfigurationTableSeeder extends Seeder
             ['key' => 'display_per_page', 'value' => '10', 'shortdesc' => 'Default data yang ditampilkan dalam tabel', 'user_config' => 1, 'component' => 'app'],
             ['key' => 'copyright', 'value' => 'Copyright &copy; 2020. bankbjb.', 'shortdesc' => null, 'user_config' => 1, 'component' => 'app'],
             ['key' => 'auto_logout', 'value' => '10', 'shortdesc' => 'Auto Logout User jika idle (dalam menit)', 'user_config' => 1, 'component' => 'parameter'],
-            ['key' => 'app_server', 'value' => '127.0.0.1:84', 'shortdesc' => 'IP App Server', 'user_config' => 1, 'component' => 'parameter'],
+            ['key' => 'app_server', 'value' => '127.0.0.1', 'shortdesc' => 'IP App Server', 'user_config' => 1, 'component' => 'parameter'],
             
         ];
 

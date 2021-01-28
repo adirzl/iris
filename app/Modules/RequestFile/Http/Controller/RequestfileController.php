@@ -2,7 +2,7 @@
 
 namespace Modules\RequestFile\Http\Controllers;
 
-// use App\Entities\Configuration;
+
 use Illuminate\Http\Request;
 use Modules\RequestFile\Entities\Requestfile;
 

@@ -25,7 +25,8 @@
         "renatomarinho/laravel-page-speed": "^1.8",
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-csp": "^2.5",
-        "spatie/laravel-permission": "^3.11"
+        "spatie/laravel-permission": "^3.11",
+        "stolz/assets": "^0.2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -51,17 +52,10 @@
         },
         "classmap": [
             "database/seeds",
-            "database/factories",
-            "app/Modules/API/database/seeds",
-            "app/Modules/HCS/database/seeds",
-            "app/Modules/LimitOtorisasi/database/seeds",
-            "app/Modules/Opsi/database/seeds",
-            "app/Modules/RuleHakAkses/database/seeds",
-            "app/Modules/UIM/database/seeds"
+            "database/factories"
         ],
         "files": [
-            "app/helpers.php",
-            "app/uim_helpers.php"
+            "app/helpers.php"
         ]
     },
     "autoload-dev": {
