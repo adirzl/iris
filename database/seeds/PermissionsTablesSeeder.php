@@ -50,10 +50,12 @@ class PermissionsTablesSeeder extends Seeder
                 'label' => 'Hak Akses', 'uri' => 'hak-akses', 'icon' => 'fa fa-key', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '1', 'childs' => []
             ],
+
             [
                 'label' => 'Opsi', 'uri' => 'opsi', 'icon' => 'fas fa-sliders-h', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '2', 'childs' => []
             ],
+
             [
                 'label' => 'Log', 'uri' => '#', 'icon' => 'fa fa-rss-square', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '3', 'childs' => [
@@ -67,6 +69,7 @@ class PermissionsTablesSeeder extends Seeder
                     ],
                 ],
             ],
+
             [
                 'label' => 'Setting', 'uri' => 'setting', 'icon' => 'fa fa-cogs', 'parent_module' => null,
                 'visible' => 1, 'sequence' => '4', 'childs' => []
@@ -80,87 +83,11 @@ class PermissionsTablesSeeder extends Seeder
                         'sequence' => '5.1',
                     ],
                     [
-                        'label' => 'Deskripsi Menu', 'uri' => 'kelola-profilkonglomerasi', 'icon' => 'fas fa-sitemap', 'visible' => 1,
+                        'label' => 'Konten', 'uri' => 'kelola-konten', 'icon' => 'fas fa-sitemap', 'visible' => 1,
                         'sequence' => '5.2',
-                    ],
-                    [
-                        'label' => 'Profil Perusahaan', 'uri' => 'kelola-comprof', 'icon' => 'fas fa-id-card', 'visible' => 1,
-                        'sequence' => '5.3',
-                    ],
-                    [
-                        'label' => 'Tugas dan Wewenang', 'uri' => 'kelola-tugaswewenang', 'icon' => 'fas fa-tasks', 'visible' => 1,
-                        'sequence' => '5.4',
-                    ],
-                    [
-                        'label' => 'Regulasi', 'uri' => 'kelola-regulasi', 'icon' => 'fas fa-gavel', 'visible' => 1,
-                        'sequence' => '5.5',
-                    ],
-                    [
-                        'label' => 'Artikel', 'uri' => 'kelola-artikel', 'icon' => 'fas fa-book', 'visible' => 1,
-                        'sequence' => '5.6',
-                    ],
-                    [
-                        'label' => 'Laporan', 'uri' => 'kelola-laporan', 'icon' => 'fas fa-file', 'visible' => 1,
-                        'sequence' => '5.7',
                     ],
                 ],
             ],
-            // [
-            //     'label' => 'Kelola Kuisioner', 'uri' => '#', 'icon' => 'fas fa-list-ol ', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '6', 'childs' => [
-            //         [
-            //             'label' => 'Pertanyaan', 'uri' => 'kuisioner-pertanyaan', 'icon' => 'fas fa-question-circle', 'visible' => 1,
-            //             'sequence' => '6.1',
-            //         ],
-            //         [
-            //             'label' => 'Hasil Penilaian', 'uri' => 'kuisioner-penilaian', 'icon' => 'fas fa-check-circle', 'visible' => 1,
-            //             'sequence' => '6.2',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Isi Kuisioner', 'uri' => '#', 'icon' => 'fa fa-list-alt', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '7', 'childs' => [
-            //         [
-            //             'label' => 'Manrisk', 'uri' => 'isikuisioner-manrisk', 'icon' => 'fas fa-file-archive', 'visible' => 1,
-            //             'sequence' => '7.1',
-            //         ],
-            //         [
-            //             'label' => 'Kepatuhan', 'uri' => 'isikuisioner-kepatuhan', 'icon' => 'fas fa-file-archive', 'visible' => 1,
-            //             'sequence' => '7.2',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Pengawasan Audit', 'uri' => '#', 'icon' => 'fa fa-copy', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '8', 'childs' => [
-            //         [
-            //             'label' => 'RKAT', 'uri' => 'rkat-audit', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-            //             'sequence' => '8.1',
-            //         ],
-            //         [
-            //             'label' => 'DMTL', 'uri' => 'dmtl-audit', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-            //             'sequence' => '8.2',
-            //         ],
-            //     ],
-            // ],
-            // [
-            //     'label' => 'Kinerja Keuangan', 'uri' => '#', 'icon' => 'fas fa-money-check-alt', 'parent_module' => null,
-            //     'visible' => 1, 'sequence' => '9', 'childs' => [
-            //         [
-            //             'label' => 'Target RBB', 'uri' => 'target-rbb', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-            //             'sequence' => '9.1',
-            //         ],
-            //         [
-            //             'label' => 'Realisasi RBB', 'uri' => 'realisasi-rbb', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-            //             'sequence' => '9.2',
-            //         ],
-            //         [
-            //             'label' => 'Kajian Kinerja Keuangan', 'uri' => 'kajian-kinerja', 'icon' => 'fas fa-file-alt', 'visible' => 1,
-            //             'sequence' => '9.3',
-            //         ],
-            //     ],
-            // ],
 
             [
                 'label' => 'Dokumen', 'uri' => '#', 'icon' => 'fas fa-money-check-alt', 'parent_module' => null,
@@ -260,29 +187,6 @@ class PermissionsTablesSeeder extends Seeder
                         $role->givePermissionTo($permissions->pluck('name')->toArray());
                     });
             }
-            //  elseif ($role->name == 'DATA CENTER') {
-            //     $modules->whereIn('label', ['Log', 'Log Aplikasi', 'Setting', 'Management API', 'Datasource', 'Log Transaksi', 'Sinkronisasi', 'Pegawai', 'Limit', 'Server'])
-            //         ->each(function ($module, $key) use ($role, $permissions) {
-            //             DB::table($this->roleHasModuleTable)->insert(['role_id' => $role->id, 'module_id' => $module['id']]);
-            //             $permissions = $permissions->map(function ($permission, $key) use ($module) {
-            //                 if (Str::contains($permission['name'], $module['uri'])) {
-            //                     return $permission;
-            //                 }
-            //             });
-            //             $role->givePermissionTo($permissions->pluck('name')->toArray());
-            //         });
-            // } elseif ($role->name === 'RSM') {
-            //     $modules->whereIn('label', ['Log', 'Log Aktifitas', 'Data HCS', 'Pegawai (HCS)', 'Data UIM', 'Pegawai (UIM)', 'Limit Otorisasi', 'Registrasi', 'Aplikasi', 'Fungsi', 'Sinkronisasi', 'Pegawai', 'Limit'])
-            //         ->each(function ($module, $key) use ($role, $permissions) {
-            //             DB::table($this->roleHasModuleTable)->insert(['role_id' => $role->id, 'module_id' => $module['id']]);
-            //             $permissions = $permissions->map(function ($permission, $key) use ($module) {
-            //                 if (Str::contains($permission['name'], $module['uri'])) {
-            //                     return $permission;
-            //                 }
-            //             });
-            //             $role->givePermissionTo($permissions->pluck('name')->toArray());
-            //         });
-            // }
         }
     }
 }

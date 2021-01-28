@@ -80,16 +80,6 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('app_artikel', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('title',255)->nullable();
-            $table->text('description')->nullable();
-            $table->string('image',255)->nullable();
-            $table->string('file',255)->nullable();
-            $table->integer('status');
-            $table->timestamps();
-        });
-
         Schema::create('app_banner', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('title',255)->nullable();
@@ -99,109 +89,12 @@ class CreateAppTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('app_company_prof', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('company_name',255)->nullable();
-            $table->text('description')->nullable();
-            $table->string('image',255)->nullable();
-            $table->integer('status');
-            $table->integer('status_progress');
-            $table->timestamps();
-        });
-
-        Schema::create('app_laporan', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('title',255)->nullable();
-            $table->text('description')->nullable();
-            $table->string('image',255)->nullable();
-            $table->string('file',255)->nullable();
-            $table->integer('status');
-            $table->integer('status_progres');
-            $table->uuid('company_name');
-            $table->string('periode',100)->nullable();
-            $table->integer('tahun')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('app_local_user', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('username',255)->nullable();
-            $table->string('password',255)->nullable();
-            $table->integer('status');
-            $table->timestamps();
-        });
-
-        Schema::create('app_penilaian', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('user',255)->nullable();
-            $table->string('nama_peruasahaan',100)->nullable();
-            $table->string('modal_inti',100)->nullable();
-            $table->string('periode',16)->nullable();
-            $table->integer('status');
-            $table->string('status_kuisioner',100)->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('app_penilaian_detail', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->uuid('id_induk');
-            $table->uuid('id_pertanyaan');
-            $table->uuid('id_pertanyaan_detail');
-            $table->integer('jawaban');
-            $table->string('file',255)->nullable();
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('app_pertanyaan', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->text('description')->nullable();
-            $table->integer('status');
-            $table->integer('status_user');
-            $table->timestamps();
-        });
-
-        Schema::create('app_pertanyaan_detail', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->uuid('id_induk');
-            $table->string('no_pertanyaan',255)->nullable();
-            $table->string('pertanyaan',255)->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('app_profil', function(Blueprint $table){
+        Schema::create('app_konten', function(Blueprint $table){
             $table->uuid('id')->primary();
             $table->string('title',255)->nullable();
             $table->string('description',255)->nullable();
             $table->string('image',255)->nullable();
             $table->integer('status');
-            $table->timestamps();
-        });
-
-
-        Schema::create('app_regulasi', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('title',255)->nullable();
-            $table->text('description')->nullable();
-            $table->string('image',255)->nullable();
-            $table->string('file',255)->nullable();
-            $table->integer('status');
-            $table->timestamps();
-        });
-
-        Schema::create('app_struktur', function(Blueprint $table){
-            $table->string('key',100)->nullable();
-            $table->string('value',255)->nullable();
-            $table->text('shortdesc',255)->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('app_tugas_wewenang', function(Blueprint $table){
-            $table->uuid('id')->primary();
-            $table->string('title',255)->nullable();
-            $table->text('description')->nullable();
-            $table->integer('status');
-            $table->integer('status_data');
             $table->timestamps();
         });
 

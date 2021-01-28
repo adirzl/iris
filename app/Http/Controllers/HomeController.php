@@ -23,13 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = [
-            'artikel' => \Modules\Kelola\Entities\Artikel::count(),
-            'penilaian' => \Modules\Kuisioner\Entities\Penilaian::where('status','=','1')->count(),
-            'laporan' => \Modules\Kelola\Entities\Laporan::where('status','=','1')->count(),
-        ];
-        // dd($data);exit();
-
-        return view('home', compact('data'));
+        return view('home');
     }
 }

@@ -66,15 +66,10 @@
 
                             <!-- Top Cart
        ============================================= -->
-                            <!-- <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank" id="top-cart-trigger"><i class="icon-door-open"></i></a> -->
-                            <!-- #top-cart end -->
-
-                            <!-- Small modal -->
-                            <!-- <button class="button button-mini button-circle" data-toggle="modal"
-                                data-target=".bs-example-modal-sm"><i class="icon-door-open"></i> Login</button> -->
                             <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank"
                                 class="button button-mini button-circle"><i
-                                    class="icon-door-open"></i><span>Login</span></a>
+                                    class="icon-door-open"></i><span>Login</span>
+                            </a>
 
                         </div>
 
@@ -95,37 +90,10 @@
                         <nav class="primary-menu">
 
                             <ul class="menu-container">
-                                {{-- <li class="menu-item">
-                                    <a class="menu-link" href="{{ url('landing') }}">
-                                        <div>Beranda</div>
-                                    </a>
-                                </li> --}}
                                 <li class="menu-item">
                                     <a class="menu-link" href="{{ url('landing') }}">
                                         <div>Beranda</div>
                                     </a>
-                                    {{-- <ul class="sub-menu-container">
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('profil') }}">
-                                                <div><i class="icon-stack"></i>Profil</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('visi_misi') }}">
-                                                <div><i class="icon-stack"></i>Visi Misi</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('sekapur_sirih') }}">
-                                                <div><i class="icon-stack"></i>Sekapur Sirih Pindiv</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a class="menu-link" href="{{ url('arsip_dokumen') }}">
-                                                <div><i class="icon-stack"></i>Arsip Dokumen</div>
-                                            </a>
-                                        </li>
-                                    </ul> --}}
                                 </li>
                                 <li class="menu-item">
                                     <a class="menu-link" href="{{ url('perencanaan_bisnis_bank') }}">

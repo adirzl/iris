@@ -61,9 +61,9 @@ return [
             'visibility' => 'public',
         ],
 
-        'public_asset_profil' => [
+        'public_asset_konten' => [
             'driver' => 'local',
-            'root' => public_path('profil'),
+            'root' => public_path('konten'),
             'visibility' => 'public',
         ],
 
