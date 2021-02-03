@@ -142,7 +142,7 @@
                                 <button class="button button-small button-circle button-border button-fill button-blue"
                                     data-toggle="modal" data-target=".bs-example-modal-lg"><i
                                         class="icon-user"></i><span>User LJK</span></button>
-                                <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank"
+                                <a href="{{ url(auth()->check() ? 'home' : 'login_admin') }}" target="blank"
                                     class="button button-small button-circle button-border button-fill button-green"><i
                                         class="icon-user"></i><span>User Internal</span></a>
                             </p>

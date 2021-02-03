@@ -16,9 +16,9 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      */
     public function index(Request $request)
     {
-        
+
         $data = FileArchive::fetch($request);
-        
+
         return view('Dokumen::FileArchive.default', compact('data'));
     }
 
@@ -36,7 +36,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      * @param ArtikelRequest $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(ArtikelRequest $request)
+    public function store(Request $request)
     {
         $values = $request->except(['_token', 'save']);
 

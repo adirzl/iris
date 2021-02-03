@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes(['reset' => false, 'verify' => false]);
 
 Route::get('/login_iris', 'LandingController@login_iris');
+Route::get('/login_admin', 'LandingController@login_iris');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Landing Routes

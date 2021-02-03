@@ -75,21 +75,25 @@
 
                     <div class="col-md-8">
                         <div id="snav-content1">
-                            <h3>{{$profil[0]->title}}</h3>
+                            <h3>{{ isset($profil[0]->title) ? $profil[0]->title : '' }}</h3>
+                            @if(isset($profil[0]->image))
                             <img class="alignright img-responsive" src="http://127.0.0.1:8080/konten/{{$profil[0]->image}}" width="30%"
                                 height="30%" alt="Image">
-                                {{$profil[0]->description}}
+                            @endif
+                                {{ isset($profil[0]->description) ? $profil[0]->description : '' }}
                         </div>
 
                         <div id="snav-content2">
-                            <h3>{{$profil[1]->title}}</h3>
-                            {{$profil[1]->description}}
+                            <h3>{{ isset($profil[1]->title) ? $profil[1]->title : ''}}</h3>
+                            {{ isset($profil[1]->description) ? $profil[1]->description : '' }}
                         </div>
 
                         <div id="snav-content3">
+                            @if(isset($profil[2]->title))
                             <img class="alignleft img-responsive" src="http://127.0.0.1:8080/konten/{{$profil[2]->image}}" alt="Image">
-                            <h3>{{$profil[2]->title}}</h3>
-                            {{$profil[2]->description}}
+                            @endif
+                            <h3>{{ isset($profil[2]->title) ? $profil[2]->title : '' }}</h3>
+                            {{ isset($profil[2]->description) ? $profil[2]->description : '' }}
                         </div>
                     </div>
 

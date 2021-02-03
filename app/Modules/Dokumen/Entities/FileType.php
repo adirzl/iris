@@ -21,7 +21,7 @@ class FileType extends \App\Entities\Model
      * @var array
      */
     protected $hidden = [
-        'id',
+        // 'id',
     ];
 
     /**
@@ -48,6 +48,6 @@ class FileType extends \App\Entities\Model
         return $q->get();
     }
 
-    
+
 
 }

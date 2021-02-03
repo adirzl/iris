@@ -21719,7 +21719,7 @@ $(document).ready(function() {
         }
     });
 
-    
+
 $('.unitkerja_kode_upload').on('change',function()
 {
     var unitkerja_kode =$(this).val();
@@ -21730,10 +21730,10 @@ $('.unitkerja_kode_upload').on('change',function()
             // data: 'id='+produk,
             success: function (response) {
                 if (response) {
-                    
+
                 $('#filetype').empty()
-                $('#filetype').append('<option value="">-Pilih Satu-</option>'); 
-                
+                $('#filetype').append('<option value="">-Pilih Satu-</option>');
+
                 $.each(response['data'],function(index)
                     {
                     var value=response['data'][index]['id'];
@@ -21741,7 +21741,7 @@ $('.unitkerja_kode_upload').on('change',function()
                         $('#filetype').append('<option value=' + value + '>' + text + '</option>'); // return empty
                     });
 
-                } 
+                }
                 // else if (data['error']) {
                 //     alert(data['error']);
                 // } else {
@@ -21752,11 +21752,11 @@ $('.unitkerja_kode_upload').on('change',function()
                 alert(data.responseText);
             }
         });
-    
-  
+
+
 }
 );
-        
+
 
 
 

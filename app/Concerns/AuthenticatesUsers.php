@@ -22,7 +22,6 @@ trait AuthenticatesUsers
         if (strlen($credentials[$this->username()]) == 4 && config('auth.force_local') === false) {
             $authenticated = $this->uim($credentials);
         } else {
-
             $authenticated =  $this->guard()->attempt($credentials, $request->filled('remember'));
         }
         if ($authenticated) {
