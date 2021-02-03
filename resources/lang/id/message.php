@@ -9,6 +9,8 @@ return [
     'update_error' => 'Gagal mengubah :value dari :key.',
     'delete_success' => 'Berhasil menghapus :value dari :key.',
     'delete_error' => 'Gagal menghapus :value dari :key.',
+    'ubahstatus_success' => 'Berhasil Mengubah Status ',
+    'ubahstatus_error' => 'Gagal Mengubah Status',
     'errors_occured' => 'Beberapa kesalahan terjadi:',
     'status_success' => 'Berhasil mengubah status :key menjadi :status.',
     'status_error' => 'Gagal mengubah status :key menjadi :status.',

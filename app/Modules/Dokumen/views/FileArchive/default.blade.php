@@ -9,23 +9,30 @@
                     <thead>
                     <tr>
                         <th>{{ __('label.action') }}</th>
-                        <th>Nama Dokumen</th>
+                        <th>Unit Kerja</th>
                         <th>Type</th>
+                        <th>File</th>
                         <th>Versi</th>
-                        <th>Tanggal</th>
                         <th>Status</th>
+                        <th>Date Create</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($data as $d)
                         <tr>
                             <td>
-                                {!! Html::linkResource('kelola-banner', ['id' => $d->id, 'label' => $d->title]) !!}  
+                                {!! Html::linkDokumenUpload('dokumen-filearchive', ['id' => $d->id, 'label' => $d->unitkerja->nama.' - '.$d->file_type->name,'status'=>$d->status]) !!}  
                             </td>
-                            <td>{{ $d->title }}</td>
-                            <td>{{ $d->description }}</td>
-                            <td><img src="{{ asset('banner/' . $d->image) }}" alt="logo" width="200" height="100" style="margin-top: 0%"></td>
-                            <td><span class="badge bg-{{ $d->status == 1 ? 'success' : 'danger'}}">{{ $d->status !== '-' ? $status_banner[$d->status] : $d->status }}</span></td>
+                            <td>{{ $d->unitkerja->nama }}</td>
+                            <td>{{ $d->file_type->name }}</td>
+                            <td>
+                            <a href="{{asset($d->path)}}">
+                                No {{$d->version}} {{format_date($d->created_at,'%e %B %Y')}}
+                            </a>
+                            </td>
+                            <td>{{ $d->version }}</td>
+                            <td>{{ $status[$d->status] }}</td>
+                            <td>{{ $d->created_at }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -35,11 +42,11 @@
             <div class="card-footer clearfix">
                 <div class="row">
                     <div class="col-6">
-                        {{ $data->appends(\Illuminate\Support\Arr::except(request()->input(), '_token'))->setPath(url('kelola-banner'))->links() }}
+                        {{ $data->appends(\Illuminate\Support\Arr::except(request()->input(), '_token'))->setPath(url('dokumen-filearchive'))->links() }}
                     </div>
 
                     <div class="col-6 text-right">
-                        {!! Html::linkCreate('kelola-banner') !!}
+                        {!! Html::linkCreate('dokumen-filearchive') !!}
                     </div>
                 </div>
             </div>

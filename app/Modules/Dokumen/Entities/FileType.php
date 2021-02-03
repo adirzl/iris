@@ -20,9 +20,9 @@ class FileType extends \App\Entities\Model
     /**
      * @var array
      */
-    protected $hidden = [
-        // 'id',
-    ];
+    // protected $hidden = [
+    //     'id',
+    // ];
 
     /**
      * @param \Illuminate\Database\Eloquent\Builder $query

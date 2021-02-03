@@ -3,6 +3,7 @@
 namespace Modules\Dokumen\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Modules\Dokumen\Entities\FileType;
 use Modules\Dokumen\Entities\FileArchive;
 use Modules\Dokumen\Http\Requests\FileArchiveRequest;
 use Modules\UnitKerja\Entities\UnitKerja;
@@ -29,42 +30,64 @@ class FileArchiveController extends \App\Http\Controllers\Controller
     {
         $d = new FileArchive;
         $unitkerja = to_dropdown(UnitKerja::where('status',1)->get(),'kode','nama');
-        return view('Dokumen::FileArchive.form', compact('d','unitkerja'));
+        $filetype=[''=>'-Pilih Satu-'];
+        return view('Dokumen::FileArchive.form', compact('d','unitkerja','filetype'));
     }
 
     /**
      * @param ArtikelRequest $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(FileArchiveRequest $request)
     {
         $values = $request->except(['_token', 'save']);
 
-        if (isset($values['image'])) {
-            $current_time = Carbon::now();
-            $date = $current_time->toDateString();
-            $time = $current_time->toTimeString();
-            $ext = $values['image']->getClientOriginalExtension();
-            $file = $values['image']->storeAs(null, preg_replace('/[^\w@,.;]/', '_', $values['title']) . '_' . $date . '_' . preg_replace('/[^\w@,.;]/', '_', $time) . '.' . $ext, 'public_asset_artikel');
-            $values['image'] = $file;
+        $filetype =FileType::find($values['filetype']);
+        $fileExt  = $values['path']->getClientOriginalExtension();
+        $filename = $values['unitkerja_kode']."_".$filetype->name."_".$values['version'].".".$fileExt;
+
+        if (is_dir("dokumen/" . $values['unitkerja_kode']))
+        {
+            if (is_dir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id))
+            {
+                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+            }
+            else
+            {
+                mkdir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
+                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+            }
+        }
+        else
+        {
+            mkdir("dokumen/" . $values['unitkerja_kode']);
+            if (is_dir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id))
+            {
+                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+            }
+            else
+            {
+                mkdir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
+                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+
+            }
+        }
+        $values['path']="dokumen/" . $values['unitkerja_kode']."/".$filetype->id."/".$filename;
+        if($values['version']>1)
+        {
+            FileArchive::where([
+                'unitkerja_kode'=>$values['unitkerja_kode'],
+                'filetype'=>$values['filetype'],
+                'version'=>$values['version']-1
+                ])->update(['deleted_at'=>now()]);
         }
 
-        if (isset($values['file'])) {
-            $current_time = Carbon::now();
-            $date = $current_time->toDateString();
-            $time = $current_time->toTimeString();
-            $ext = $values['file']->getClientOriginalExtension();
-            $file = $values['file']->storeAs(null, preg_replace('/[^\w@,.;]/', '_', $values['title']) . '_' . $date . '_' . preg_replace('/[^\w@,.;]/', '_', $time) . '.' . $ext, 'public_asset_artikel_file');
-            $values['file'] = $file;
-        }
-
-        $artikel = Artikel::create($values);
-
-        $message = ['key' => 'Kelola Artikel', 'value' => $values['title']];
+        $filearchive = FileArchive::create($values);
+        $message = ['key' => 'Dokumen', 'value' => $filetype->name];
         $status = 'error';
         $response = trans('message.create_failed', $message);
 
-        if ($artikel) {
+        if ($filearchive) {
             $status = 'success';
             $response = trans('message.create_success', $message);
         }
@@ -74,21 +97,23 @@ class FileArchiveController extends \App\Http\Controllers\Controller
         }
 
         if ($request->only('save')) {
-            return redirect()->route('kelola-artikel.create')->with($status, $response);
+            return redirect()->route('dokumen-filearchive.create')->with($status, $response);
         }
 
-        return redirect('kelola-artikel')->with($status, $response);
+        return redirect('dokumen-filearchive')->with($status, $response);
     }
 
     /**
      * @param Artikel $kelola_artikel
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Artikel $kelola_artikel)
+    public function edit(FileArchive $dokumen_filearchive)
     {
-        $image = 'image';
-        $file = 'file';
-        return view('kelola::artikel.form', compact('kelola_artikel', 'image', 'file'));
+        $d=$dokumen_filearchive;
+        $d->version=$d->version+1;
+        $unitkerja = UnitKerja::where(['kode'=>$d->unitkerja_kode,'status'=>1])->pluck('nama','kode');
+        $filetype = FileType::where('id',$d->filetype)->pluck('name','id');
+        return view('Dokumen::FileArchive.form', compact('d','unitkerja','filetype'));
     }
 
     /**
@@ -98,56 +123,19 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      */
     public function update(ArtikelRequest $request, Artikel $kelola_artikel)
     {
-        $values = $request->except(['_token', '_method']);
 
-        if (isset($values['image'])) {
-            $current_time = Carbon::now();
-            $date = $current_time->toDateString();
-            $time = $current_time->toTimeString();
-            $ext = $values['image']->getClientOriginalExtension();
-            $file = $values['image']->storeAs(null, preg_replace('/[^\w@,.;]/', '_', $values['title']) . '_' . $date . '_' . preg_replace('/[^\w@,.;]/', '_', $time) . '.' . $ext, 'public_asset_artikel');
-            $values['image'] = $file;
-        }
-
-        if (isset($values['file'])) {
-            $current_time = Carbon::now();
-            $date = $current_time->toDateString();
-            $time = $current_time->toTimeString();
-            $ext = $values['file']->getClientOriginalExtension();
-            $file = $values['file']->storeAs(null, preg_replace('/[^\w@,.;]/', '_', $values['title']) . '_' . $date . '_' . preg_replace('/[^\w@,.;]/', '_', $time) . '.' . $ext, 'public_asset_artikel_file');
-            $values['file'] = $file;
-        }
-
-        foreach ($values as $key => $value) {
-            $kelola_artikel->$key = $value;
-        }
-
-        $message = ['key' => 'Kelola Artikel', 'value' => $kelola_artikel->title];
-        $status = 'error';
-        $response = trans('message.update_failed', $message);
-
-        if ($kelola_artikel->save()) {
-            $status = 'success';
-            $response = trans('message.update_success', $message);
-        }
-
-        if ($request->ajax()) {
-            return response()->json(['message' => $response, 'status' => $status]);
-        }
-
-        return redirect('kelola-artikel')->with($status, $response);
     }
 
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(FileArchive $dokumen_filearchive)
     {
-        $kelola_artikel = Artikel::findOrFail($id);
-        $image = 'image';
-        $file = 'file';
-        return view('kelola::artikel.show', compact('kelola_artikel', 'image', 'file'));
+        $data=FileArchive::where(['unitkerja_kode'=>$dokumen_filearchive->unitkerja_kode,
+        'filetype'=>$dokumen_filearchive->filetype,'status'=>1])->orderby('version','desc')->get();
+
+        return view('Dokumen::fileArchive.show', compact('data'));
     }
 
     /**
@@ -156,21 +144,33 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
-    public function destroy(Request $request, Artikel $kelola_artikel)
+    public function destroy(Request $request, FileArchive $dokumen_filearchive)
     {
-        $message = ['key' => 'Kelola Artikel', 'value' => $kelola_artikel->title];
-        $status = 'error';
-        $response = trans('message.delete_failed', $message);
 
-        if ($kelola_artikel->delete()) {
+        $old=$dokumen_filearchive->status;
+        $new=$dokumen_filearchive->status ==1 ? 0 : 1;
+        $message = ['key' => '', 'value' => ''];
+        $status = 'error';
+        $response = trans('message.ubahstatus_error', $message);
+
+        if ($dokumen_filearchive->update(['status'=>$new])) {
             $status = 'success';
-            $response = trans('message.delete_success', $message);
+            $response = trans('message.ubahstatus_success', $message);
         }
 
         if ($request->ajax()) {
             return response()->json(['message' => $response, 'status' => $status]);
         }
 
-        return redirect('kelola-artikel')->with($status, $response);
+        return redirect('dokumen-filearchive')->with($status, $response);
     }
+
+    public function filearchive_version($filetype,$unitkerja_kode)
+    {
+
+        $max=FileArchive::where(['filetype'=>$filetype,'unitkerja_kode'=>$unitkerja_kode,'status'=>1])->max('version');
+        $version=!$max?1:$max;
+        return response()->json(['data'=>$version]);
+    }
+
 }

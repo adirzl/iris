@@ -27,8 +27,8 @@ class FileArchive extends \App\Entities\Model
     public function scopeFetch($query, $request, $export = false)
     {
 
-        $q = $query->select(array_merge($this->fillable, ['id', 'unitkerja_kode', 'filetype', 'version', 'path','status'
-        ]))->orderBy('created_at','desc');
+        $q = $query->select(array_merge($this->fillable, ['id', 'unitkerja_kode', 'filetype', 'version', 'path','status','created_at','updated_at'
+        ]))->wherenull('deleted_at')->orderBy('created_at','desc');
 
         if ($export === false) {
             if ($request->has('per_page')) {
@@ -41,8 +41,11 @@ class FileArchive extends \App\Entities\Model
         return $q->get();
     }
 
-    public function filetype(){
-        return $this->belongsTo(FileType::class, 'filetype_id');
+    public function file_type(){
+        return $this->belongsTo(FileType::class, 'filetype');
+    }
+    public function unitkerja(){
+        return $this->hasone('Modules\UnitKerja\Entities\UnitKerja','kode','unitkerja_kode');
     }
 
 }

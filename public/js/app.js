@@ -21736,6 +21736,7 @@ $('.unitkerja_kode_upload').on('change',function()
 
                 $.each(response['data'],function(index)
                     {
+
                     var value=response['data'][index]['id'];
                     var text =response['data'][index]['name'];
                         $('#filetype').append('<option value=' + value + '>' + text + '</option>'); // return empty
@@ -21752,10 +21753,37 @@ $('.unitkerja_kode_upload').on('change',function()
                 alert(data.responseText);
             }
         });
+});
 
 
-}
-);
+
+$('.filetype_version').on('change',function()
+{
+    var filetype =$(this).val();
+    var unitkerja_kode =$('#unitkerja_kode').val();
+        $.ajax({
+            url: 'dokumen-filearchive-version/'+filetype+'/'+unitkerja_kode,
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            // data: 'id='+produk,
+            success: function (response) {
+                if (response) {
+                $('#version').val(response['data']);
+
+
+                }
+                // else if (data['error']) {
+                //     alert(data['error']);
+                // } else {
+                //     alert('Whoops Something went wrong!!');
+                // }
+            },
+            error: function (data) {
+                alert(data.responseText);
+            }
+        });
+});
+
 
 
 
