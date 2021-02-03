@@ -6,6 +6,7 @@ return [
     'logout' => 'Logout',
     'create' => 'Tambah',
     'edit' => 'Ubah',
+    'revisi' => 'Revisi',
     'show' => 'Detail',
     'delete' => 'Hapus',
     'upload' => 'Unggah',
@@ -29,6 +30,8 @@ return [
     'delete_message' => 'Hapus `:label`',
     'show_message' => 'Lihat Detail `:label`',
     'approve_message' => 'Approval `:label`',
+    'revisi_message' => 'Revisi `:label`',
+    'ubahstatus_message' => 'Ubah Status `:label`',
     /** Configuration **/
     'configuration' => 'Configuration',
     'maintenance_tab' => 'Maintenance',

@@ -177,6 +177,30 @@ class HtmlBuilder extends \Collective\Html\HtmlBuilder
         return __('label.no_action');
     }
 
+    public function linkDokumenUpload(string $uri, $parameter)
+    {
+        if (auth()->user()->can('edit ' . $uri) || auth()->user()->can('destroy ' . $uri)) {
+            $html = '<div class="btn-group"><button class="btn btn-default">' . __('label.action') . '</button><button class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown"><span class="sr-only"></span><div class="dropdown-menu" role="menu">';
+
+            if (auth()->user()->can('show ' . $uri)) {
+                $html .= '<a href="' . route($uri . '.show', $parameter['id']) . '" class="dropdown-item" rel="content" title="' . __('label.show_message', ['label' => $parameter['label']]) . '">' . __('label.show_message', ['label' => $parameter['label']]) . '</a>';
+            }
+            if (auth()->user()->can('edit ' . $uri)) {
+                $html .= '<a href="' . route($uri . '.edit', $parameter['id']) . '" class="dropdown-item" rel="action" title="' . __('label.revisi_message', ['label' => $parameter['label']]) . '">' . __('label.revisi_message', ['label' => $parameter['label']]) . '</a>';
+            }
+
+            if (auth()->user()->can('destroy ' . $uri)) {
+                $html .= '<a href="' . route($uri . '.destroy', $parameter['id']) . '" class="dropdown-item" rel="delete" title="' . __('label.ubahstatus_message', ['label' => $parameter['label']]) . '">' . __('label.ubahstatus_message', ['label' => $parameter['label']]) . '</a>';
+            }
+
+            $html .= '</div></button>';
+
+            return $this->toHtmlString($html);
+        }
+
+        return __('label.no_action');
+    }
+
     /**
      * @param string $uri
      * @param $parameter
