@@ -17,16 +17,45 @@
                                 <li>{{ $item->name }}</li>
                             @endforeach --}}
                             <div class="table-responsive">
+<<<<<<< HEAD
+                                <table class="table table-bordered mb-0">
+                                    <thead style="text-align: center">
+                                        <tr>
+=======
                                 <table class="table table-bordered table-striped mb-0">
                                     <thead>
                                         <tr>
                                             <th>Actions</th>
+>>>>>>> 93d9db87bd277d61cf8c1b1259765c955673085d
                                             <th>Nomor</th>
                                             <th>Nama Dokumen</th>
                                             <th>Kategori</th>
                                             <th>Type</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
+<<<<<<< HEAD
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="text-align: center">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>$nama_dokumen</td>
+                                            <td>$kategori</td>
+                                            <td>$type</td>
+                                            <td>$tanggal</td>
+                                            <td>$status</td>
+                                            <td>$action</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>$nama_dokumen</td>
+                                            <td>$kategori</td>
+                                            <td>$type</td>
+                                            <td>$tanggal</td>
+                                            <td>$status</td>
+                                            <td>$action</td>
+=======
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,6 +101,7 @@
                                             <td>no 12 Desember 2020</td>
                                             <td>20-01-2021</td>
                                             <td><span class="badge bg-warning">Private</span></td>
+>>>>>>> 93d9db87bd277d61cf8c1b1259765c955673085d
                                         </tr>
                                     </tbody>
                                 </table>
@@ -84,7 +114,11 @@
                             <div class="widget clearfix">
                                 {{ Form::text('keyword', null, ['class' => 'form-control', 'id' => 'keyword', 'placeholder' => 'Pencarian']) }}
                                 <br>
+<<<<<<< HEAD
+                                <button class="btn btn-secondary">Cari</button>
+=======
                                 <button class="btn btn-primary">Cari</button>
+>>>>>>> 93d9db87bd277d61cf8c1b1259765c955673085d
                                 <div style="margin-top: 10%">
                                     <label>File Type</label>
                                     <li>{{ Form::checkbox('fileType[]', true, null) }} [name]</li>

@@ -12,9 +12,9 @@
                             <div class="swiper-slide dark">
                                 <div class="container">
                                     <div class="slider-caption slider-caption-left">
-                                        <h2 data-animate="fadeInUp">DMA</h2>
-                                        <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">Documents
-                                            Management Application
+                                        <h2 data-animate="fadeInUp">{{ $v->title }}</h2>
+                                        <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">
+                                            {{ $v->description }}
                                         </p>
                                     </div>
                                 </div>
@@ -47,10 +47,6 @@
                                 <em>seluruh dokumentasi</em> <br>dan <em>tata kelola dokumen</em> di lingkungan
                                 <em>Bank bjb</em></span>
                         </div>
-                        {{-- <div class="col-12 col-lg-auto mt-4 mt-lg-0">
-                            <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank"
-                                class="button button-large button-circle m-0">Login</a>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -78,55 +74,23 @@
                     </div>
 
                     <div class="col-md-8">
-
                         <div id="snav-content1">
-                            <h3>Profil</h3>
-                            <img class="alignright img-responsive" src="http://127.0.0.1:8080/img/logo.png" width="30%"
+                            <h3>{{$profil[0]->title}}</h3>
+                            <img class="alignright img-responsive" src="http://127.0.0.1:8080/konten/{{$profil[0]->image}}" width="30%"
                                 height="30%" alt="Image">
-
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, ex, inventore, tenetur, repellat
-                            ipsam soluta libero amet nam aspernatur perspiciatis quos praesentium et debitis ea odit enim
-                            illo aliquid eligendi numquam neque. Ipsum, voluptatibus, perspiciatis a quam aliquid cumque
-                            cupiditate id ipsa tempora eveniet. Cupiditate, necessitatibus, consequatur odio. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit. Dicta, vitae, laboriosam libero nihil labore hic
-                            modi? Odit, veritatis nulla molestiae!
+                                {{$profil[0]->description}}
                         </div>
 
                         <div id="snav-content2">
-                            <h3>Visi dan Misi</h3>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, voluptatem reprehenderit natus
-                            facilis id deserunt iusto incidunt cumque odit molestias iste dolor eum esse soluta facere
-                            quidem minima in voluptate explicabo ducimus alias ratione aut molestiae omnis fuga labore quod
-                            optio modi voluptatum nemo suscipit porro maxime ex. Maiores, ratione eligendi labore quaerat
-                            veniam laborum nam rem delectus illum aspernatur quas sequi animi quae nulla alias hic inventore
-                            ex perspiciatis nisi consequatur enim a aut dolorum modi quod perferendis dicta impedit magni
-                            placeat repellat. Soluta, dicta, dolores, reiciendis, eum accusamus esse et debitis rem fugit
-                            fugiat dignissimos pariatur sint quod laborum autem. Nulla, ducimus, culpa, vel esse unde
-                            sapiente expedita corrupti consectetur veritatis quas autem laborum mollmquam amet eius.
-                            Numquam, ad, quaerat, ab, deleniti rem quae doloremque tenetur ea illum hic amet dolor suscipit
-                            porro ducimus excepturi perspiciatis modi praesentium voluptas quos expedita provident adipisci
-                            dolorem! Aliquam, ipsum voluptatem et voluptates impedit ab libero similique a. Nisi, ea magni
-                            et ab voluptatum nemo numquam odio quis libero aspernatur architecto tempore qui quisquam saepe
-                            corrupti necessitatibus natus quos aliquid non voluptatibus quod obcaecati fugiat quibusdam
-                            quidem inventore quia eveniet iusto culpa incidunt vero vel in accusamus eum. Molestiae nihil
-                            voluptate molestias illum eligendi esse nesciunt.
+                            <h3>{{$profil[1]->title}}</h3>
+                            {{$profil[1]->description}}
                         </div>
 
                         <div id="snav-content3">
-                            <img class="alignleft img-responsive" src="http://127.0.0.1:8080/img/team2.png" alt="Image">
-                            <h3>Sekapur Sirih Pimpinan Divisi</h3>
-                            Dolor aperiam modi aliquam dolores consequatur error commodi ad
-                            eius incidunt! Libero, odio incidunt ullam sunt fugiat? Laboriosam, perferendis, debitis, harum
-                            soluta iste eos sunt odit architecto porro eveniet sint optio nihil animi. Laudantium, quam,
-                            culpa, velit molestias exercitationem reprehenderit enim distinctio aliquam aut ex numquam sequi
-                            assumenda veritatis fuga voluptatum. Magni, voluptates adipisci unde sapiente eligendi ea maxime
-                            tempora pariatur ipsa.. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae,
-                            aspernatur, saepe, quidem animi hic rem libero earum fuga voluptas culpa iure qui accusantium ab
-                            quae dolorum laborum quia repellat fugit aut minima molestias placeat mollitia doloribus
-                            quibusdam consectetur officia nesciunt ad. Ab, quod ipsum commodi assumenda doloribus possimus
-                            sed laudantium.Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            <img class="alignleft img-responsive" src="http://127.0.0.1:8080/konten/{{$profil[2]->image}}" alt="Image">
+                            <h3>{{$profil[2]->title}}</h3>
+                            {{$profil[2]->description}}
                         </div>
-
                     </div>
 
                 </div>
