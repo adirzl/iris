@@ -146,6 +146,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
      */
     public function destroy(Request $request, FileArchive $dokumen_filearchive)
     {
+        
         $old=$dokumen_filearchive->status;
         $new=$dokumen_filearchive->status ==1 ? 0 : 1;
         $message = ['key' => '', 'value' => ''];
