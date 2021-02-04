@@ -8,6 +8,9 @@ use Modules\Dokumen\Entities\FileArchive;
 use Modules\Dokumen\Http\Requests\FileArchiveRequest;
 use Modules\UnitKerja\Entities\UnitKerja;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class FileArchiveController extends \App\Http\Controllers\Controller
 {
@@ -42,52 +45,73 @@ class FileArchiveController extends \App\Http\Controllers\Controller
     {
         $values = $request->except(['_token', 'save']);
 
-        $filetype =FileType::find($values['filetype']);
+        $filetype = FileType::find($values['filetype_id']);
         $fileExt  = $values['path']->getClientOriginalExtension();
         $filename = $values['unitkerja_kode']."_".$filetype->name."_".$values['version'].".".$fileExt;
 
-        if (is_dir("dokumen/" . $values['unitkerja_kode']))
-        {
-            if (is_dir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id))
-            {
-                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
-            }
-            else
-            {
-                mkdir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
-                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
-            }
-        }
-        else
-        {
-            mkdir("dokumen/" . $values['unitkerja_kode']);
-            if (is_dir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id))
-            {
-                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
-            }
-            else
-            {
-                mkdir("dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
-                $values['path']->move("dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+        $values['path'] = "dokumen/" . $values['unitkerja_kode']."/".$filetype->id."/".$filename;
 
-            }
-        }
-        $values['path']="dokumen/" . $values['unitkerja_kode']."/".$filetype->id."/".$filename;
-        if($values['version']>1)
-        {
-            FileArchive::where([
-                'unitkerja_kode'=>$values['unitkerja_kode'],
-                'filetype'=>$values['filetype'],
-                'version'=>$values['version']-1
-                ])->update(['deleted_at'=>now()]);
-        }
+        $file = $request->file()['path'];
 
-        $filearchive = FileArchive::create($values);
+        // if (is_dir("public/dokumen/" . $values['unitkerja_kode']))
+        // {
+        //     if (is_dir("public/dokumen/" . $values['unitkerja_kode']."/".$filetype->id))
+        //     {
+        //         $values['path']->move("public/dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+        //     }
+        //     else
+        //     {
+        //         mkdir("public/dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
+        //         $values['path']->move("public/dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+        //     }
+        // }
+        // else
+        // {
+        //     // mkdir("dokumen/" . $values['unitkerja_kode']);
+        //     Storage::makeDirectory("public/dokumen/" . $values['unitkerja_kode']);
+        //     if (is_dir("public/dokumen/" . $values['unitkerja_kode']."/".$filetype->id))
+        //     {
+        //         $values['path']->move("public/dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+        //     }
+        //     else
+        //     {
+        //         Storage::makeDirectory("public/dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
+        //         // mkdir("public/dokumen/" . $values['unitkerja_kode']."/".$filetype->id);
+        //         $values['path']->move("public/dokumen/" .  $values['unitkerja_kode']."/".$filetype->id, $filename);
+
+        //     }
+        // }
+        // $filearchive = FileArchive::create($values);
+
         $message = ['key' => 'Dokumen', 'value' => $filetype->name];
         $status = 'error';
         $response = trans('message.create_failed', $message);
 
-        if ($filearchive) {
+        $saveResult = false;
+        DB::transaction(function () use($values, $filetype, $filename, $file, &$saveResult) {
+            FileArchive::create($values);
+
+            if($values['version'] > 1){
+                FileArchive::where([
+                    'unitkerja_kode'=>$values['unitkerja_kode'],
+                    'filetype_id'=>$values['filetype_id'],
+                    'version'=>$values['version'] - 1
+                    ])->update(['deleted_at'=>now()]);
+            }
+
+            $destination = 'public/dokumen/'. $values['unitkerja_kode']."/".$filetype->id;
+
+            if(!File::exists($destination))
+            {
+                Storage::makeDirectory($destination);
+            }
+
+            $file->move(storage_path('app/'.$destination), $filename);
+
+            $saveResult = true;
+        });
+
+        if ($saveResult) {
             $status = 'success';
             $response = trans('message.create_success', $message);
         }
@@ -165,11 +189,10 @@ class FileArchiveController extends \App\Http\Controllers\Controller
         return redirect('dokumen-filearchive')->with($status, $response);
     }
 
-    public function filearchive_version($filetype,$unitkerja_kode)
+    public function filearchive_version($filetype, $unitkerja_kode)
     {
-
-        $max=FileArchive::where(['filetype'=>$filetype,'unitkerja_kode'=>$unitkerja_kode,'status'=>1])->max('version');
-        $version=!$max?1:$max;
+        $max = FileArchive::where([ 'filetype_id' => $filetype, 'unitkerja_kode' => $unitkerja_kode ])->max('version');
+        $version= !$max ? 1 : $max + 1;
         return response()->json(['data'=>$version]);
     }
 

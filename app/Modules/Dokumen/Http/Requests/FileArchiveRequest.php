@@ -40,7 +40,7 @@ class FileArchiveRequest extends FormRequest
         return [
             'unitkerja_kode.required' => __('validation.required', ['attribute' => 'Unit Kerja']),
             'version.required' => __('validation.version', ['attribute' => 'Versi'])
-            
+
         ];
     }
 }

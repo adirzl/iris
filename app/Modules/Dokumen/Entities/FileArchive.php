@@ -13,7 +13,7 @@ class FileArchive extends \App\Entities\Model
      * @var array
      */
     protected $fillable = [
-        'id', 'unitkerja_kode', 'filetype', 'version', 'path','status'
+        'id', 'unitkerja_kode', 'filetype_id', 'version', 'path','status'
     ];
 
     /**
@@ -27,8 +27,11 @@ class FileArchive extends \App\Entities\Model
     public function scopeFetch($query, $request, $export = false)
     {
 
-        $q = $query->select(array_merge($this->fillable, ['id', 'unitkerja_kode', 'filetype', 'version', 'path','status','created_at','updated_at'
-        ]))->wherenull('deleted_at')->orderBy('created_at','desc');
+        $q = $query->select(
+            array_merge(
+                $this->fillable,
+                ['id', 'unitkerja_kode', 'filetype_id', 'version', 'path','status','created_at','updated_at']
+            ))->wherenull('deleted_at')->orderBy('created_at','desc');
 
         if ($export === false) {
             if ($request->has('per_page')) {
@@ -42,7 +45,7 @@ class FileArchive extends \App\Entities\Model
     }
 
     public function file_type(){
-        return $this->belongsTo(FileType::class, 'filetype');
+        return $this->belongsTo(FileType::class, 'filetype_id');
     }
     public function unitkerja(){
         return $this->hasone('Modules\UnitKerja\Entities\UnitKerja','kode','unitkerja_kode');
