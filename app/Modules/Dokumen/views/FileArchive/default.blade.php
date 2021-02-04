@@ -21,13 +21,13 @@
                     @foreach ($data as $d)
                         <tr>
                             <td>
-                                {!! Html::linkDokumenUpload('dokumen-filearchive', ['id' => $d->id, 'label' => $d->unitkerja->nama.' - '.$d->file_type->name,'status'=>$d->status]) !!}  
+                                {!! Html::linkDokumenUpload('dokumen-filearchive', ['id' => $d->id, 'label' => $d->unitkerja->nama.' - '.$d->file_type->name,'status'=>$d->status]) !!}
                             </td>
                             <td>{{ $d->unitkerja->nama }}</td>
                             <td>{{ $d->file_type->name }}</td>
                             <td>
                             <a href="{{asset($d->path)}}">
-                                No {{$d->version}} {{format_date($d->created_at,'%e %B %Y')}}
+                                {{ $d->label }}
                             </a>
                             </td>
                             <td>{{ $d->version }}</td>

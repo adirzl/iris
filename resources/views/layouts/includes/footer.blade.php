@@ -126,7 +126,7 @@
 
 <!-- Bootstrap Data Table Plugin -->
 <script src="{{ asset('app-assets/js/components/bs-datatable.js')}}"></script>
-
+{!! \Assets::js() !!}
 
 </body>
 

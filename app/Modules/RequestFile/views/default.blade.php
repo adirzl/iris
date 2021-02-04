@@ -11,6 +11,7 @@
                         <th>{{ __('label.action') }}</th>
                         <th>User</th>
                         <th>File</th>
+                        <th>File Type</th>
                         <th>Description</th>
                         <th>Status</th>
                     </tr>
@@ -32,7 +33,8 @@
                                 {!! Html::linkActions($actions, $d->id) !!}
                             </td>
                             <td>{{ $d->user->profile->nama }}</td>
-                            <td>{{ $d->filearchive->filetype->name }}</td>
+                            <td>{{ $d->filearchive->label }}</td>
+                            <td>{{ $d->filearchive->file_type->name }}</td>
                             <td>{{ $d->description }}</td>
                             <td>{{ isset($d->status) ? $status_requestfile[$d->status] : '' }}</td>
                         </tr>

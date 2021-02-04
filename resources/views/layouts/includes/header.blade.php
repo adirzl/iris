@@ -5,6 +5,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="SemiColonWeb" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Stylesheets
  ============================================= -->
@@ -96,18 +97,20 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-link" href="{{ url('perencanaan_bisnis_bank') }}">
+                                    <a class="menu-link" href="{{ route('landingdetail', ['id' => env('U_PBB_ID')]) }}">
+
                                         <div>Perencanaan Bisnis Bank (PBB)</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-link" href="{{ url('pengembangan_organisasi') }}">
+                                    <a class="menu-link" href="{{ route('landingdetail', ['id' => env('U_POR_ID')]) }}">
+
                                         <div>Pengembangan Organisasi</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
                                     <a class="menu-link"
-                                        href="{{ route('landingdetail', ['id' => env('UK_RISET_ID')]) }}">
+                                        href="{{ route('landingdetail', ['id' => env('U_RISET_ID')]) }}">
                                         <div>Riset</div>
                                     </a>
                                 </li>

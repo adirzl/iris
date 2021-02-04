@@ -484,6 +484,23 @@ class OptionsTablesSeeder extends Seeder
                     ],
                 ]
             ],
+            [
+                'id' => Str::uuid(), 'name' => 'status_requestfile', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => 1, 'value' => 'Waiting', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 2, 'value' => 'Approve', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 3, 'value' => 'Reject', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                ]
+            ],
         ];
 
         foreach ($options as $option) {

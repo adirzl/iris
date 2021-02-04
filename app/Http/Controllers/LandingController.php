@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Modules\Kelola\Entities\Banner;
 use Illuminate\Support\Facades\Auth;
 use Knp\Snappy\Pdf;
-use Modules\FileType\Entities\FileArchive;
-use Modules\FileType\Entities\FileType;
+use Modules\Dokumen\Entities\FileArchive;
+use Modules\Dokumen\Entities\FileType;
+// use Modules\FileType\Entities\FileArchive;
+// use Modules\FileType\Entities\FileType;
 use Modules\Kelola\Entities\Konten;
+use Modules\RequestFile\Entities\Requestfile;
 use Modules\UnitKerja\Entities\UnitKerja;
 use Validator;
 
@@ -24,7 +27,51 @@ class LandingController extends Controller
     {
         $data = Banner::where('status', 1)->orderBy('created_at', 'DESC')->get();
         $profil = Konten::orderBy('status', 'ASC')->get();
-        return view('landing.index', compact('data','profil'));
+        $fileArchive = FileArchive::where('unitkerja_kode', env('D_PERENCANAAN_ID'))
+            // ->where('tipe_dokumen', 2)
+            ->where('status', 1)
+            ->get();
+
+        $fileType = FileType::where('unitkerja_kode', env('D_PERENCANAAN_ID'))->get();
+
+        \Assets::addJs('landing.js');
+        return view('landing.index', compact('data', 'profil', 'fileArchive', 'fileType'));
+    }
+
+    public function landingrequestfile($id){
+        $data = FileArchive::findOrFail($id);
+        return view('landing.requestfile', compact('data'));
+    }
+
+    public function storelandingrequestfile(Request $request){
+        $data = new Requestfile();
+        $values = $request->except(['_token', 'save']);
+        // $values['user_id'] = auth()->user()->id;
+        $values['user_id'] = 'f88137f6-78ee-496d-984d-05e4b483743e';
+        $values['status'] = 1;
+
+        foreach ($values as $key => $value) {
+            $data->$key = $value;
+        }
+
+        $message = ['key' => 'Request file', 'value' => $values['user_id']];
+        $status = 'error';
+        $response = trans('message.create_failed', $message);
+
+        if ($data->save()) {
+            $status = 'success';
+            $response = trans('message.create_success', $message);
+        }
+
+        if ($request->ajax()) {
+            return response()->json(['message' => $response, 'status' => $status]);
+        }
+
+        if ($request->only('save')) {
+            return redirect()->route('landing')->with($status, $response);
+        }
+
+        return redirect('landing')->with($status, $response);
     }
 
 

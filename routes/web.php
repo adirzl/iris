@@ -23,6 +23,9 @@ Route::get('/login_iris', 'LandingController@login_iris');
 Route::get('/login_admin', 'LandingController@login_iris');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/{id}/landingrequestfile', 'LandingController@landingrequestfile')->name('landingrequestfile');
+Route::post('/storelandingrequestfile', 'LandingController@storelandingrequestfile')->name('store.landingrequestfile');
+
 // Landing Routes
 Route::get('/landing', 'LandingController@index')->name('landing');
 Route::get('/{id}/detail', 'LandingController@detail')->name('landingdetail');

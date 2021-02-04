@@ -19,7 +19,11 @@
     <title>@yield('title') :: {{ config('app.display_name') }}</title>
 </head>
 
-<body class="hold-transition login-page" style="background-image: url(../img/wallpaper_iris.png);">
+<body class="hold-transition login-page" style="background: url(../img/2958636.png) no-repeat center fixed;  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+">
     <div class="login-box" style="margin-right: 1000px;
     margin-bottom: 150px;">
         <div class="login-logo">

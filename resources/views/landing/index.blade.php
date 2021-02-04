@@ -119,62 +119,43 @@
                                 <li>{{ $item->name }}</li>
                             @endforeach --}}
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped mb-0">
+                                {{ Form::hidden('unitkerja_kode', env('D_PERENCANAAN_ID'), [ 'id' => 'unitkerja_kode' ]) }}
+                                <table class="table table-bordered table-striped mb-0" id="table-file">
                                     <thead>
                                         <tr>
                                             <th>Actions</th>
-                                            <th>Nomor</th>
+                                            {{-- <th>Nomor</th> --}}
                                             <th>Nama Dokumen</th>
-                                            <th>Kategori</th>
+                                            {{-- <th>Kategori</th> --}}
                                             <th>Type</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-info">Actions</button>
-                                                    <button type="button"
-                                                        class="btn btn-info dropdown-toggle dropdown-toggle-split"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">View</a>
-                                                        <a class="dropdown-item" href="#">Download</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td>Kajian stabilitas keuangan</td>
-                                            <td>docx</td>
-                                            <td>no 32 November 2020</td>
-                                            <td>20-01-2021</td>
-                                            <td><span class="badge bg-success" style="color: white">Public</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-info">Actions</button>
-                                                    <button type="button"
-                                                        class="btn btn-info dropdown-toggle dropdown-toggle-split"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Request</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>2</td>
-                                            <td>RBB Bank bjb 2021</td>
-                                            <td>pdf</td>
-                                            <td>no 12 Desember 2020</td>
-                                            <td>20-01-2021</td>
-                                            <td><span class="badge bg-warning">Private</span></td>
-                                        </tr>
+                                        @foreach($fileArchive as $item)
+                                            <tr>
+                                                <td>
+                                                    @if($item->tipe_dokumen == 2 || $item->last_requestfile->first()->status == 2)
+                                                        <a href="{{ asset('dokumen'. $item->unitkerja_kode .'/'. $item->filetype_id ."/". $item->filename) }}" class="btn btn-info">Open</a>
+                                                    @else
+                                                        <a href="{{ route('landingrequestfile', [ 'id'  => $item->id]) }}" class="btn btn-info">Request</a>
+                                                    @endif
+                                                </td>
+                                                {{-- <td>1</td> --}}
+                                                <td>{{ $item->label }}</td>
+                                                {{-- <td></td> --}}
+                                                <td>{{ $item->file_type->name }}</td>
+                                                <td>{{ $item->created_at }}</td>
+                                                <td>
+                                                    <span class="badge bg-success" style="color: white">{{ $tipe_dokumen[$item->tipe_dokumen] }}</span>&nbsp;
+                                                    <span class="badge bg-info" style="color: white">{{ $item->fileext }}</span>
+                                                    @if($item->tipe_dokumen == 1)
+                                                        <span class="badge bg-danger" style="color: white">{{ isset($status_requestfile[$item->last_requestfile->first()->status]) ? $status_requestfile[$item->last_requestfile->first()->status] : '' }}</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -186,15 +167,12 @@
                             <div class="widget clearfix">
                                 {{ Form::text('keyword', null, ['class' => 'form-control', 'id' => 'keyword', 'placeholder' => 'Pencarian']) }}
                                 <br>
-                                <button class="btn btn-primary">Cari</button>
+                                {{-- <button class="btn btn-primary">Cari</button> --}}
                                 <div style="margin-top: 10%">
                                     <label>File Type</label>
-                                    <li>{{ Form::checkbox('fileType[]', true, null) }} [name]</li>
-                                    {{-- @foreach ($fileType as $item)
-                                        <ul>
-                                            <li>{{ Form::checkbox('fileType[]', true, null) }} {{ $item->name }}</li>
-                                        </ul>
-                                    @endforeach --}}
+                                    @foreach($fileType as $item)
+                                        <li>{{ Form::checkbox('fileType_id[]', $item->id, null, [ 'class' => 'f_filetype']) }} {{ $item->name }}</li>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

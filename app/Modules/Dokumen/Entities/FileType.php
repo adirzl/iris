@@ -2,6 +2,7 @@
 
 namespace Modules\Dokumen\Entities;
 use Illuminate\Support\Facades\DB;
+use Modules\UnitKerja\Entities\UnitKerja;
 
 class FileType extends \App\Entities\Model
 {
@@ -46,6 +47,10 @@ class FileType extends \App\Entities\Model
         }
 
         return $q->get();
+    }
+
+    public function unit_kerja(){
+        return $this->hasOne(UnitKerja::class, 'kode', 'unitkerja_kode');
     }
 
 
