@@ -157,7 +157,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
     public function show(FileArchive $dokumen_filearchive)
     {
         $data=FileArchive::where(['unitkerja_kode'=>$dokumen_filearchive->unitkerja_kode,
-        'filetype'=>$dokumen_filearchive->filetype,'status'=>1])->orderby('version','desc')->get();
+        'filetype_id'=>$dokumen_filearchive->filetype_id,'status'=>1])->orderby('version','desc')->get();
 
         return view('Dokumen::fileArchive.show', compact('data'));
     }

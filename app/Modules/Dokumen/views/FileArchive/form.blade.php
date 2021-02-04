@@ -30,6 +30,7 @@ if ($segment !== 'create' ) { $title = 'revisi';  }
                 <div class="row">
                     <div class="col-md-12">
                     {{ Form::fgText('Versi', 'version',$d->version, ['id'=>'version','class' => 'form-control','readonly'], null, 'text', true) }}
+                    {{ Form::fgSelect('Tipe Dokumen', 'tipe_dokumen',$tipe_dokumen, $d->tipe_dokumen, ['id'=>'filetype','class' => 'form-control'], null, 'text', true) }}
                     {{ Form::fgSelect('Status', 'status',$status, $d->status, ['id'=>'filetype','class' => 'form-control'], null, 'text', true) }}
                     </div>
 
@@ -37,7 +38,7 @@ if ($segment !== 'create' ) { $title = 'revisi';  }
             </div>
 
             <div class="card-footer clearfix">
-                {{ Form::fgFormButton('opsi', $segment) }}
+                {{ Form::fgFormButton('dokumen-filearchive', $segment) }}
             </div>
         </div>
     {{ Form::close() }}
