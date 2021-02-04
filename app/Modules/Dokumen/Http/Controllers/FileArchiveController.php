@@ -42,7 +42,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
     {
         $values = $request->except(['_token', 'save']);
 
-        $filetype =FileType::find($values['filetype']);
+        $filetype =FileType::find($values['filetype_id']);
         $fileExt  = $values['path']->getClientOriginalExtension();
         $filename = $values['unitkerja_kode']."_".$filetype->name."_".$values['version'].".".$fileExt;
 
@@ -77,7 +77,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
         {
             FileArchive::where([
                 'unitkerja_kode'=>$values['unitkerja_kode'],
-                'filetype'=>$values['filetype'],
+                'filetype_id'=>$values['filetype_id'],
                 'version'=>$values['version']-1
                 ])->update(['deleted_at'=>now()]);
         }
@@ -168,8 +168,8 @@ class FileArchiveController extends \App\Http\Controllers\Controller
     public function filearchive_version($filetype,$unitkerja_kode)
     {
 
-        $max=FileArchive::where(['filetype'=>$filetype,'unitkerja_kode'=>$unitkerja_kode,'status'=>1])->max('version');
-        $version=!$max?1:$max;
+        $max=FileArchive::where(['filetype_id'=>$filetype,'unitkerja_kode'=>$unitkerja_kode,'status'=>1])->max('version');
+        $version=!$max?1:$max+1;
         return response()->json(['data'=>$version]);
     }
 

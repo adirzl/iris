@@ -344,14 +344,14 @@ class OptionsTablesSeeder extends Seeder
             ],
 
             [
-                'id' => Str::uuid(), 'name' => 'status_dokumen', 'created_at' => $now, 'updated_at' => $now,
+                'id' => Str::uuid(), 'name' => 'tipe_dokumen', 'created_at' => $now, 'updated_at' => $now,
                 'values' => [
                     [
-                        'id' => Str::uuid(), 'key' => '1', 'value' => 'Aktif', 'sequence' => 1,
+                        'id' => Str::uuid(), 'key' => '1', 'value' => 'Private', 'sequence' => 1,
                         'created_at' => $now, 'updated_at' => $now
                     ],
                     [
-                        'id' => Str::uuid(), 'key' => '2', 'value' => 'Tidak Aktif', 'sequence' => 2,
+                        'id' => Str::uuid(), 'key' => '2', 'value' => 'Public', 'sequence' => 2,
                         'created_at' => $now, 'updated_at' => $now
                     ],
                 ]

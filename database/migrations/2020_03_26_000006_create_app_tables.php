@@ -70,6 +70,7 @@ class CreateAppTables extends Migration
             $table->uuid('filetype_id');
             $table->string('version', 5);
             $table->string('path', 255);
+            $table->smallInteger('tipe_dokumen');
             $table->smallInteger('status');
             $table->timestamps();
             $table->softDeletes();
