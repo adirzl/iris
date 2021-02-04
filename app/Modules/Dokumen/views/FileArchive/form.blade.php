@@ -38,7 +38,7 @@ if ($segment !== 'create' ) { $title = 'revisi';  }
             </div>
 
             <div class="card-footer clearfix">
-                {{ Form::fgFormButton('opsi', $segment) }}
+                {{ Form::fgFormButton('dokumen-filearchive', $segment) }}
             </div>
         </div>
     {{ Form::close() }}
