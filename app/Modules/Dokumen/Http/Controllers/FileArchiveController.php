@@ -104,7 +104,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
         $d=$dokumen_filearchive;
         $d->version=$d->version+1;
         $unitkerja = UnitKerja::where(['kode'=>$d->unitkerja_kode,'status'=>1])->pluck('nama','kode');
-        $filetype = FileType::where('id',$d->filetype)->pluck('name','id');
+        $filetype = FileType::where('id',$d->filetype_id)->pluck('name','id');
         return view('Dokumen::FileArchive.form', compact('d','unitkerja','filetype'));
     }
 
@@ -160,7 +160,7 @@ class FileArchiveController extends \App\Http\Controllers\Controller
     public function filearchive_version($filetype, $unitkerja_kode)
     {
         $max = FileArchive::where([ 'filetype_id' => $filetype, 'unitkerja_kode' => $unitkerja_kode ])->max('version');
-        $version= !$max ? 1 : $max + 1;
+        $version= !$max ? 1 : $max;
         return response()->json(['data'=>$version]);
     }
 
