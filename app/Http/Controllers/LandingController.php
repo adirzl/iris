@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Knp\Snappy\Pdf;
 use Modules\Dokumen\Entities\FileArchive;
 use Modules\Dokumen\Entities\FileType;
-// use Modules\FileType\Entities\FileArchive;
-// use Modules\FileType\Entities\FileType;
 use Modules\Kelola\Entities\Konten;
 use Modules\RequestFile\Entities\Requestfile;
 use Modules\UnitKerja\Entities\UnitKerja;
@@ -79,11 +77,11 @@ class LandingController extends Controller
     {
         $unitkerja = UnitKerja::where('kode', $id)->get();
         $fileType = FileType::where('unitkerja_kode', $id)->get();
-        $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType')->where('ft.unitkerja_kode', $id)->get();
+        $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType_id')->where('ft.unitkerja_kode', $id)->get();
         return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
     }
 
-    public function login_iris()
+    public function login_i ()
     {
         return view('auth.login');
     }

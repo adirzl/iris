@@ -1,5 +1,6 @@
 <a href="{{ url('/') }}" class="brand-link">
-    <span class="brand-image">{{ config('app.name') }}</span>
+
+<img src="{{ asset('img/favicon.png') }}"  class="brand-image " style="opacity: .8">
     <span class="brand-text font-weight-light">{{ config('app.display_name') }}</span>
 </a>
 

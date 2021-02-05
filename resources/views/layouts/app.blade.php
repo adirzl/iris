@@ -25,7 +25,7 @@
     <title>@yield('title') :: {{ config('app.display_name') }}</title>
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse text-sm">
     <div class="loading-page">
         <div class="loading-content">
             <img src="{{ asset('img/loader.gif') }}">
@@ -64,6 +64,7 @@
         @include('layouts.partials.footer')
     </div>
     <script src="{{ asset('js/app.js', request()->isSecure()) }}"></script>
+    <script src="{{ asset('js/button.js', request()->isSecure()) }}"></script>
     <script>
         function leaveChange() {
             if (document.getElementById("leave").value != "1") {
