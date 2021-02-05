@@ -67,10 +67,20 @@
 
                             <!-- Top Cart
        ============================================= -->
-                            <a href="{{ url(auth()->check() ? 'home' : 'login_iris') }}" target="blank"
+                            {{-- <a href="{{ url(auth()->check() ? 'home' : 'login') }}" target="blank"
                                 class="button button-mini button-circle"><i
                                     class="icon-door-open"></i><span>Login</span>
-                            </a>
+                            </a> --}}
+
+                            @if (Auth::check())
+                                <a href="{{ url('/logout') }}" class="button button-mini button-circle button-red">
+                                    <i class="icon-door-open"></i> {{ __('label.logout') }}
+                                </a>
+                            @else
+                                <button data-toggle="modal" class="button button-mini button-circle"
+                                    data-target=".bs-example-modal-lg"><i
+                                        class="icon-door-closed"></i>Login</button>
+                            @endif
 
                         </div>
 
@@ -97,13 +107,15 @@
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-link" href="{{ route('landingdetail', ['id' => env('U_PBB_ID')]) }}">
+                                    <a class="menu-link"
+                                        href="{{ route('landingdetail', ['id' => env('U_PBB_ID')]) }}">
 
                                         <div>Perencanaan Bisnis Bank (PBB)</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
-                                    <a class="menu-link" href="{{ route('landingdetail', ['id' => env('U_POR_ID')]) }}">
+                                    <a class="menu-link"
+                                        href="{{ route('landingdetail', ['id' => env('U_POR_ID')]) }}">
 
                                         <div>Pengembangan Organisasi</div>
                                     </a>
@@ -131,7 +143,7 @@
         </header>
         <!-- #header end -->
 
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        {{-- <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-body">
@@ -153,7 +165,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
@@ -161,17 +173,19 @@
                 <div class="modal-body">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color: #2d91cd;">
-                            <h4 class="modal-title" id="myModalLabel" style="color: #fff;">Login User LJK</h4>
+                            <h4 class="modal-title" id="myModalLabel" style="color: #fff;">Login User</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="card mx-auto rounded-0 border-0"
                                 style="max-width: 400px; background-color: rgba(255,255,255,0.93);">
                                 <div class="card-body" style="padding: 40px;">
-                                    <form id="login-form" name="login-form" class="mb-0" action="{{ url('ceklogin') }}"
-                                        method="POST">
+                                    <form id="login-form" name="login-form" class="mb-0"
+                                        action="{{ url('ceklogin') }}" method="POST">
                                         @csrf
                                         <h3>Login to your Account</h3>
+
+                                        <input type="hidden" name="filearchive" id="mymodal" value="">
 
                                         <div class="row">
                                             <div class="col-12 form-group">
@@ -187,10 +201,8 @@
                                             </div>
 
                                             <div class="col-12 form-group">
-                                                <button
-                                                    class="button button-small button-circle button-border button-fill button-green m-0"
-                                                    id="login-form-submit" name="login-form-submit"
-                                                    value="login"><span>Login</span></button>
+                                                <button class="btn btn-success" id="login-form-submit"
+                                                    name="login-form-submit" value="login"><span>Login</span></button>
                                                 <a href="#" class="float-right">Forgot Password?</a>
                                             </div>
                                         </div>

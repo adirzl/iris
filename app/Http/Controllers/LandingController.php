@@ -12,6 +12,7 @@ use Modules\Dokumen\Entities\FileType;
 use Modules\Kelola\Entities\Konten;
 use Modules\RequestFile\Entities\Requestfile;
 use Modules\UnitKerja\Entities\UnitKerja;
+use Modules\User\Entities\User;
 use Validator;
 
 class LandingController extends Controller
@@ -36,12 +37,18 @@ class LandingController extends Controller
         return view('landing.index', compact('data', 'profil', 'fileArchive', 'fileType'));
     }
 
-    public function landingrequestfile($id){
-        $data = FileArchive::findOrFail($id);
-        return view('landing.requestfile', compact('data'));
+    public function landingrequestfile($id)
+    {
+        if (Auth::check()) {
+            $data = FileArchive::findOrFail($id);
+            return view('landing.requestfile', compact('data'));
+        } else {
+            return view('landing.login');
+        }
     }
 
-    public function storelandingrequestfile(Request $request){
+    public function storelandingrequestfile(Request $request)
+    {
         $data = new Requestfile();
         $values = $request->except(['_token', 'save']);
         // $values['user_id'] = auth()->user()->id;
@@ -81,7 +88,7 @@ class LandingController extends Controller
         return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
     }
 
-    public function login_i ()
+    public function login_i()
     {
         return view('auth.login');
     }
@@ -131,26 +138,24 @@ class LandingController extends Controller
         $messages = [
             'username.required'     => 'Email wajib diisi',
             'password.required'     => 'Password wajib diisi',
-            'password.string'       => 'Password harus berupa string'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
+            return redirect()->route('landing')->withErrors($validator)->withInput($request->all);
         }
 
-        $data = [
-            'username'  => $request->input('username'),
-            'password'  => $request->input('password'),
-        ];
+        $username = $request->input('username');
+        $password = $request->input('password');
 
-
-        $a = UserLocal::attempt($data);
-        dd($a);
-        if (Auth::check()) {
-            return redirect()->route('home');
+        if (Auth::attempt(['username' => $username, 'password' => $password])) {
+            if ($request->filearchive != null) {
+                return redirect()->route('landingrequestfile', ['id' => $request->filearchive])->with(['success' => 'Login Berhasil']);
+            } else {
+                return redirect()->route('landing')->with(['success' => 'Login Berhasil']);
+            }
         } else {
-            return redirect()->route('landing');
+            return redirect()->route('landing')->with(['error' => 'Username atau Password anda salah !!']);
         }
     }
 }

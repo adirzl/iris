@@ -18,7 +18,8 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="swiper-slide-bg" style="background-image: url('banner/{{ $v->image }}');"></div>
+                                <div class="swiper-slide-bg" style="background-image: url('banner/{{ $v->image }}');">
+                                </div>
                             </div>
                         @endif
                     @endforeach
@@ -76,21 +77,23 @@
                     <div class="col-md-8">
                         <div id="snav-content1">
                             <h3>{{ isset($profil[0]->title) ? $profil[0]->title : '' }}</h3>
-                            @if(isset($profil[0]->image))
-                            <img class="alignright img-responsive" src="http://127.0.0.1:8080/konten/{{$profil[0]->image}}" width="30%"
-                                height="30%" alt="Image">
+                            @if (isset($profil[0]->image))
+                                <img class="alignright img-responsive"
+                                    src="http://127.0.0.1:8080/konten/{{ $profil[0]->image }}" width="30%" height="30%"
+                                    alt="Image">
                             @endif
-                                {{ isset($profil[0]->description) ? $profil[0]->description : '' }}
+                            {{ isset($profil[0]->description) ? $profil[0]->description : '' }}
                         </div>
 
                         <div id="snav-content2">
-                            <h3>{{ isset($profil[1]->title) ? $profil[1]->title : ''}}</h3>
+                            <h3>{{ isset($profil[1]->title) ? $profil[1]->title : '' }}</h3>
                             {{ isset($profil[1]->description) ? $profil[1]->description : '' }}
                         </div>
 
                         <div id="snav-content3">
-                            @if(isset($profil[2]->title))
-                            <img class="alignleft img-responsive" src="http://127.0.0.1:8080/konten/{{$profil[2]->image}}" alt="Image">
+                            @if (isset($profil[2]->title))
+                                <img class="alignleft img-responsive"
+                                    src="http://127.0.0.1:8080/konten/{{ $profil[2]->image }}" alt="Image">
                             @endif
                             <h3>{{ isset($profil[2]->title) ? $profil[2]->title : '' }}</h3>
                             {{ isset($profil[2]->description) ? $profil[2]->description : '' }}
@@ -119,7 +122,7 @@
                                 <li>{{ $item->name }}</li>
                             @endforeach --}}
                             <div class="table-responsive">
-                                {{ Form::hidden('unitkerja_kode', env('D_PERENCANAAN_ID'), [ 'id' => 'unitkerja_kode' ]) }}
+                                {{ Form::hidden('unitkerja_kode', env('D_PERENCANAAN_ID'), ['id' => 'unitkerja_kode']) }}
                                 <table class="table table-bordered table-striped mb-0" id="table-file">
                                     <thead>
                                         <tr>
@@ -133,13 +136,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($fileArchive as $item)
+                                        @foreach ($fileArchive as $item)
                                             <tr>
                                                 <td>
-                                                    @if($item->tipe_dokumen == 2 || $item->last_requestfile->first()->status == 2)
-                                                        <a href="{{ asset('dokumen'. $item->unitkerja_kode .'/'. $item->filetype_id ."/". $item->filename) }}" class="btn btn-info">Open</a>
+                                                    @if ($item->tipe_dokumen == 2 || isset($item->last_requestfile->first()->status) == 2)
+                                                        <a href="{{ asset('dokumen' . $item->unitkerja_kode . '/' . $item->filetype_id . '/' . $item->filename) }}"
+                                                            class="btn btn-info">Open</a>
                                                     @else
-                                                        <a href="{{ route('landingrequestfile', [ 'id'  => $item->id]) }}" class="btn btn-info">Request</a>
+                                                        @if (Auth::check())
+                                                            <a href="{{ route('landingrequestfile', ['id' => $item->id]) }}"
+                                                                class="btn btn-warning">Request</a>
+                                                        @else
+                                                            <input type="hidden" name="filearchive" id="filearchive"
+                                                                value="{{ $item->id }}">
+                                                            <button data-toggle="modal" class="btn btn-warning"
+                                                                data-target=".bs-example-modal-lg" id="request">Request</button>
+                                                        @endif
                                                     @endif
                                                 </td>
                                                 {{-- <td>1</td> --}}
@@ -148,10 +160,13 @@
                                                 <td>{{ $item->file_type->name }}</td>
                                                 <td>{{ $item->created_at }}</td>
                                                 <td>
-                                                    <span class="badge bg-success" style="color: white">{{ $tipe_dokumen[$item->tipe_dokumen] }}</span>&nbsp;
-                                                    <span class="badge bg-info" style="color: white">{{ $item->fileext }}</span>
-                                                    @if($item->tipe_dokumen == 1)
-                                                        <span class="badge bg-danger" style="color: white">{{ isset($status_requestfile[$item->last_requestfile->first()->status]) ? $status_requestfile[$item->last_requestfile->first()->status] : '' }}</span>
+                                                    <span class="badge bg-success"
+                                                        style="color: white">{{ $tipe_dokumen[$item->tipe_dokumen] }}</span>&nbsp;
+                                                    <span class="badge bg-info"
+                                                        style="color: white">{{ $item->fileext }}</span>
+                                                    @if ($item->tipe_dokumen == 1)
+                                                        <span class="badge bg-danger"
+                                                            style="color: white">{{ isset($status_requestfile[isset($item->last_requestfile->first()->status)]) ? isset($status_requestfile[isset($item->last_requestfile->first()->status)]) : '' }}</span>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -170,8 +185,9 @@
                                 {{-- <button class="btn btn-primary">Cari</button> --}}
                                 <div style="margin-top: 10%">
                                     <label>File Type</label>
-                                    @foreach($fileType as $item)
-                                        <li>{{ Form::checkbox('fileType_id[]', $item->id, null, [ 'class' => 'f_filetype']) }} {{ $item->name }}</li>
+                                    @foreach ($fileType as $item)
+                                        <li>{{ Form::checkbox('fileType_id[]', $item->id, null, ['class' => 'f_filetype']) }}
+                                            {{ $item->name }}</li>
                                     @endforeach
                                 </div>
                             </div>
