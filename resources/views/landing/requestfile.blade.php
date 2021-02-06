@@ -20,7 +20,7 @@
                             {{ Form::textarea('description', null, ['id' => 'feedback-form-more-feedback', 'class' => 'form-control', 'cols' => '2', 'rows' => '5']) }}
                             <br>
                             <button type="submit" class="btn btn-info">Request</button>&nbsp;
-                            <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</button></a>
                         </div>
                         {{ Form::close() }}
                     </div>

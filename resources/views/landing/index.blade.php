@@ -107,7 +107,6 @@
 
     <section id="page-title">
         <div class="container clearfix">
-            {{-- <h1>{{ strtoupper($unitkerja->name) }}</h1> --}}
             <h1>Arsip Dokumen</h1>
             <span>Deskripsi singkat judul</span>
         </div>
@@ -118,18 +117,13 @@
                 <div class="row">
                     <div class="postcontent col-lg-9">
                         <ul>
-                            {{-- @foreach ($data as $item)
-                                <li>{{ $item->name }}</li>
-                            @endforeach --}}
                             <div class="table-responsive">
                                 {{ Form::hidden('unitkerja_kode', env('D_PERENCANAAN_ID'), ['id' => 'unitkerja_kode']) }}
                                 <table class="table table-bordered table-striped mb-0" id="table-file">
                                     <thead>
                                         <tr>
                                             <th>Actions</th>
-                                            {{-- <th>Nomor</th> --}}
                                             <th>Nama Dokumen</th>
-                                            {{-- <th>Kategori</th> --}}
                                             <th>Type</th>
                                             <th>Tanggal</th>
                                             <th>Status</th>
@@ -141,7 +135,7 @@
                                                 <td>
                                                     @if ($item->tipe_dokumen == 2 || isset($item->last_requestfile->first()->status) == 2)
                                                         <a href="{{ asset('dokumen' . $item->unitkerja_kode . '/' . $item->filetype_id . '/' . $item->filename) }}"
-                                                            class="btn btn-info">Open</a>
+                                                            class="btn btn-success">Open</a>
                                                     @else
                                                         @if (Auth::check())
                                                             <a href="{{ route('landingrequestfile', ['id' => $item->id]) }}"
@@ -150,13 +144,12 @@
                                                             <input type="hidden" name="filearchive" id="filearchive"
                                                                 value="{{ $item->id }}">
                                                             <button data-toggle="modal" class="btn btn-warning"
-                                                                data-target=".bs-example-modal-lg" id="request">Request</button>
+                                                                data-target=".bs-example-modal-lg"
+                                                                id="request">Request</button>
                                                         @endif
                                                     @endif
                                                 </td>
-                                                {{-- <td>1</td> --}}
                                                 <td>{{ $item->label }}</td>
-                                                {{-- <td></td> --}}
                                                 <td>{{ $item->file_type->name }}</td>
                                                 <td>{{ $item->created_at }}</td>
                                                 <td>
@@ -182,7 +175,6 @@
                             <div class="widget clearfix">
                                 {{ Form::text('keyword', null, ['class' => 'form-control', 'id' => 'keyword', 'placeholder' => 'Pencarian']) }}
                                 <br>
-                                {{-- <button class="btn btn-primary">Cari</button> --}}
                                 <div style="margin-top: 10%">
                                     <label>File Type</label>
                                     @foreach ($fileType as $item)
