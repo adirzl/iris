@@ -81,7 +81,7 @@ class LandingController extends Controller
         return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
     }
 
-    public function login_i ()
+    public function login_iris()
     {
         return view('auth.login');
     }

@@ -17,11 +17,11 @@
                     @foreach ($data as $d)
                         <tr>
                             <td>
-                                {!! Html::linkDokumen('dokumen-filetype', ['id' => $d->unitkerja_kode, 'label' => $d->nama]) !!}  
+                                {!! Html::linkDokumen('dokumen-filetype', ['id' => $d->unitkerja_kode, 'label' => $d->nama]) !!}
                             </td>
                             <td>{{ $d->nama }}</td>
                             <td>
-                                @include('Dokumen::Filetype.modal')
+                                @include('Dokumen::FileType.modal')
                             </td>
                         </tr>
                     @endforeach
