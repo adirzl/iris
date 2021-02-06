@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Auth::routes(['reset' => false, 'verify' => false]);
 
-Route::get('/login_iris', 'LandingController@login_iris');
 Route::get('/login_admin', 'LandingController@login_iris');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/{id}/landingrequestfile', 'LandingController@landingrequestfile')->name('landingrequestfile');
 Route::post('/storelandingrequestfile', 'LandingController@storelandingrequestfile')->name('store.landingrequestfile');

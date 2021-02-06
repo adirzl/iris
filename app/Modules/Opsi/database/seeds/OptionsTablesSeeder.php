@@ -182,7 +182,8 @@ class OptionsTablesSeeder extends Seeder
                     [
                         'id' => Str::uuid(), 'key' => '4', 'value' => 'Telah Diimplemantsikan', 'sequence' => 4,
                         'created_at' => $now, 'updated_at' => $now
-                    ],                ]
+                    ],
+                ]
             ],
             [
                 'id' => Str::uuid(), 'name' => 'environment', 'created_at' => $now, 'updated_at' => $now,
@@ -497,6 +498,23 @@ class OptionsTablesSeeder extends Seeder
                     ],
                     [
                         'id' => Str::uuid(), 'key' => 3, 'value' => 'Reject', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                ]
+            ],
+            [
+                'id' => Str::uuid(), 'name' => 'status_konten', 'created_at' => $now, 'updated_at' => $now,
+                'values' => [
+                    [
+                        'id' => Str::uuid(), 'key' => 1, 'value' => 'Profil', 'sequence' => 1,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 2, 'value' => 'Visi dan Misi', 'sequence' => 2,
+                        'created_at' => $now, 'updated_at' => $now
+                    ],
+                    [
+                        'id' => Str::uuid(), 'key' => 3, 'value' => 'Sekapur Sirih Pindiv', 'sequence' => 3,
                         'created_at' => $now, 'updated_at' => $now
                     ],
                 ]

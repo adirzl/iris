@@ -7,10 +7,10 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{ config('app.url') }}">
-    <script src="{{ asset('chartjs/code/highcharts.js')}}"></script>
-    <script src="{{ asset('chartjs/code/modules/exporting.js')}}"></script>
-    <script src="{{ asset('chartjs/code/modules/export-data.js')}}"></script>
-    <script src="{{ asset('chartjs/code/modules/accessibility.js')}}"></script>
+    <script src="{{ asset('chartjs/code/highcharts.js') }}"></script>
+    <script src="{{ asset('chartjs/code/modules/exporting.js') }}"></script>
+    <script src="{{ asset('chartjs/code/modules/export-data.js') }}"></script>
+    <script src="{{ asset('chartjs/code/modules/accessibility.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/app.css', request()->isSecure()) }}">
     <link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css', request()->isSecure()) }}">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -73,8 +73,10 @@
                 document.getElementById("message").innerHTML = "Pertanyaan";
             }
         }
+
     </script>
     <script src="{{ asset('js/tempusdominus-bootstrap-4.min.js', request()->isSecure()) }}"></script>
-    
+
 </body>
+
 </html>
