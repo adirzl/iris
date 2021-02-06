@@ -78,8 +78,7 @@
                                 </a>
                             @else
                                 <button data-toggle="modal" class="button button-mini button-circle"
-                                    data-target=".bs-example-modal-lg"><i
-                                        class="icon-door-closed"></i>Login</button>
+                                    data-target=".bs-example-modal-lg"><i class="icon-door-closed"></i>Login</button>
                             @endif
 
                         </div>

@@ -1,10 +1,10 @@
 <!-- Footer
-		============================================= -->
+  ============================================= -->
 <footer id="footer" class="dark">
     <div class="container">
 
         <!-- Footer Widgets
-				============================================= -->
+    ============================================= -->
         <div class="footer-widgets-wrap">
 
             <div class="row col-mb-50">
@@ -15,11 +15,13 @@
 
                             <div class="widget clearfix">
 
-                                <img src="{{asset('app-assets/images/logo-bjb-2.png')}}" alt="Image" class="footer-logo" width="70%" height="70%">
+                                <img src="{{ asset('app-assets/images/logo-bjb-2.png') }}" alt="Image"
+                                    class="footer-logo" width="70%" height="70%">
 
                                 <p>PT. Bank Pembangunan Jawa Barat dan Banten</p>
 
-                                <div style="background: url('app-assets/images/world-map.png') no-repeat center center; background-size: 100%;">
+                                <div
+                                    style="background: url('app-assets/images/world-map.png') no-repeat center center; background-size: 100%;">
                                     <address>
                                         <strong>Kantor Pusat:</strong><br>
                                         Menara Bank bjb<br>
@@ -37,7 +39,8 @@
                                 <abbr title="Kontak Bank bjb"><strong>Kontak Bank bjb</strong></abbr><br>
                                 <abbr title="Phone Number"><strong>Telp:</strong></abbr> 022-4234868<br>
                                 <abbr title="Fax"><strong>Fax:</strong></abbr> 022-4206099<br><br>
-                                <abbr title="Email Address"><strong>Email Bank bjb:</strong></abbr> <br>Informasi Investor : <br>ir@bankbjb.co.id <br> Informasi Korporasi : corsec@bankbjb.co.id
+                                <abbr title="Email Address"><strong>Email Bank bjb:</strong></abbr> <br>Informasi
+                                Investor : <br>ir@bankbjb.co.id <br> Informasi Korporasi : corsec@bankbjb.co.id
                             </div>
 
                         </div>
@@ -50,25 +53,33 @@
 
                                         <div class="row">
                                             <div class="col-6 col-md-12 col-lg-6 clearfix bottommargin-sm">
-                                                <a href="#" class="social-icon si-dark si-colored si-facebook mb-0" style="margin-right: 10px;">
+                                                <a href="#" class="social-icon si-dark si-colored si-facebook mb-0"
+                                                    style="margin-right: 10px;">
                                                     <i class="icon-facebook"></i>
                                                     <i class="icon-facebook"></i>
                                                 </a>
-                                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
+                                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like
+                                                            us</strong><br>on Facebook</small></a>
                                             </div>
                                             <div class="col-6 col-md-12 col-lg-6 clearfix">
-                                                <a href="#" class="social-icon si-dark si-colored si-twitter mb-0" style="margin-right: 10px;">
+                                                <a href="#" class="social-icon si-dark si-colored si-twitter mb-0"
+                                                    style="margin-right: 10px;">
                                                     <i class="icon-twitter"></i>
                                                     <i class="icon-twitter"></i>
                                                 </a>
-                                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Twitter</small></a>
+                                                <a href="#"><small
+                                                        style="display: block; margin-top: 3px;"><strong>Follow
+                                                            us</strong><br>on Twitter</small></a>
                                             </div>
                                             <div class="col-6 col-md-12 col-lg-6 clearfix">
-                                                <a href="#" class="social-icon si-dark si-colored si-instagram mb-0" style="margin-right: 10px;">
+                                                <a href="#" class="social-icon si-dark si-colored si-instagram mb-0"
+                                                    style="margin-right: 10px;">
                                                     <i class="icon-instagram"></i>
                                                     <i class="icon-instagram"></i>
                                                 </a>
-                                                <a href="#"><small style="display: block; margin-top: 3px;"><strong>Follow us</strong><br>on Instagram</small></a>
+                                                <a href="#"><small
+                                                        style="display: block; margin-top: 3px;"><strong>Follow
+                                                            us</strong><br>on Instagram</small></a>
                                             </div>
                                         </div>
 
@@ -90,7 +101,7 @@
     </div>
 
     <!-- Copyrights
-			============================================= -->
+   ============================================= -->
     <div id="copyrights">
         <div class="container">
 
@@ -112,20 +123,20 @@
 <!-- #wrapper end -->
 
 <!-- Go To Top
-	============================================= -->
+ ============================================= -->
 <div id="gotoTop" class="icon-angle-up"></div>
 
 <!-- JavaScripts
-	============================================= -->
+ ============================================= -->
 <script src="{{ asset('app-assets/js/jquery.js') }}"></script>
 <script src="{{ asset('app-assets/js/plugins.min.js') }}"></script>
 
 <!-- Footer Scripts
-	============================================= -->
+ ============================================= -->
 <script src="{{ asset('app-assets/js/functions.js') }}"></script>
 
 <!-- Bootstrap Data Table Plugin -->
-<script src="{{ asset('app-assets/js/components/bs-datatable.js')}}"></script>
+<script src="{{ asset('app-assets/js/components/bs-datatable.js') }}"></script>
 {!! \Assets::js() !!}
 
 </body>
