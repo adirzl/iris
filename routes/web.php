@@ -25,6 +25,8 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/{id}/landingrequestfile', 'LandingController@landingrequestfile')->name('landingrequestfile');
 Route::post('/storelandingrequestfile', 'LandingController@storelandingrequestfile')->name('store.landingrequestfile');
+Route::post('dokumen-filearchive/searchdocument', '\Modules\Dokumen\Http\Controllers\FileArchiveController@searchdocument');
+Route::post('{id}/dokumen-filearchive/searchdocument', '\Modules\Dokumen\Http\Controllers\FileArchiveController@searchdocument');
 
 // Landing Routes
 Route::get('/landing', 'LandingController@index')->name('landing');

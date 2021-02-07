@@ -52,7 +52,7 @@ class LandingController extends Controller
         $data = new Requestfile();
         $values = $request->except(['_token', 'save']);
         // $values['user_id'] = auth()->user()->id;
-        $values['user_id'] = 'f88137f6-78ee-496d-984d-05e4b483743e';
+        $values['user_id'] = auth()->user()->id;
         $values['status'] = 1;
 
         foreach ($values as $key => $value) {
@@ -82,10 +82,18 @@ class LandingController extends Controller
 
     public function detail($id)
     {
-        $unitkerja = UnitKerja::where('kode', $id)->get();
-        $fileType = FileType::where('unitkerja_kode', $id)->get();
-        $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType_id')->where('ft.unitkerja_kode', $id)->get();
-        return view('landing.detail', compact('data', 'unitkerja', 'fileType'));
+        $unitkerja = UnitKerja::where('kode', $id)->first();
+        // $fileType = FileType::where('unitkerja_kode', $id)->get();
+        // $data = FileArchive::join('app_filetype as ft', 'ft.id', 'app_filearchive.fileType_id')->where('ft.unitkerja_kode', $id)->get();
+        $fileArchive = FileArchive::where('unitkerja_kode', $unitkerja->kode)
+            // ->where('tipe_dokumen', 2)
+            ->where('status', 1)
+            ->get();
+
+        $fileType = FileType::where('unitkerja_kode', $unitkerja->kode)->get();
+
+        \Assets::addJs('landing.js');
+        return view('landing.detail', compact('fileArchive', 'unitkerja', 'fileType'));
     }
 
     public function login_iris()

@@ -133,9 +133,9 @@
                                         @foreach ($fileArchive as $item)
                                             <tr>
                                                 <td>
-                                                    @if ($item->tipe_dokumen == 2 || isset($item->last_requestfile->first()->status) == 2)
-                                                        <a href="{{ asset('dokumen' . $item->unitkerja_kode . '/' . $item->filetype_id . '/' . $item->filename) }}"
-                                                            class="btn btn-success">Open</a>
+                                                    @if ($item->tipe_dokumen == 2 || ($item->last_requestfile->count() > 0 ? ($item->last_requestfile->first()->status == 2 ? true : false) : false))
+                                                        <a href="{{ asset('storage/dokumen/' . $item->unitkerja_kode . '/' . $item->filetype_id . '/' . $item->filename) }}"
+                                                            class="btn btn-success" target="_blank">Open</a>
                                                     @else
                                                         @if (Auth::check())
                                                             <a href="{{ route('landingrequestfile', ['id' => $item->id]) }}"
@@ -159,7 +159,7 @@
                                                         style="color: white">{{ $item->fileext }}</span>
                                                     @if ($item->tipe_dokumen == 1)
                                                         <span class="badge bg-danger"
-                                                            style="color: white">{{ isset($status_requestfile[isset($item->last_requestfile->first()->status)]) ? isset($status_requestfile[isset($item->last_requestfile->first()->status)]) : '' }}</span>
+                                                            style="color: white">{{ isset($status_requestfile[isset($item->last_requestfile->first()->status)]) ? $status_requestfile[$item->last_requestfile->first()->status] : '' }}</span>
                                                     @endif
                                                 </td>
                                             </tr>

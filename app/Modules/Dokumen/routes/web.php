@@ -9,7 +9,7 @@ Route::group(['middleware' => ['auth', 'role:' . permitRolesByUri('dokumen-filet
 
 
 Route::group(['middleware' => ['auth', 'role:' . permitRolesByUri('dokumen-filearchive')]], function () {
-    Route::post('dokumen-filearchive/searchdocument', 'FileArchiveController@searchdocument');
+    // Route::post('dokumen-filearchive/searchdocument', 'FileArchiveController@searchdocument');
     Route::resource('dokumen-filearchive', 'FileArchiveController');
     Route::post('dokumen-filearchive/filter', 'FileArchiveController@index');
     Route::get('dokumen-filearchive-version/{filetype}/{unitkerja_kode}', 'FileArchiveController@filearchive_version');
