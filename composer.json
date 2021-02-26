@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ajaxray/php-watermark": "^0.1.1",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.5",
@@ -26,7 +27,9 @@
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-csp": "^2.5",
         "spatie/laravel-permission": "^3.11",
-        "stolz/assets": "^0.2.0"
+        "stolz/assets": "^0.2.0",
+        "setasign/fpdf": "1.8.*",
+        "setasign/fpdi": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

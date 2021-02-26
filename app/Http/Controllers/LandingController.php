@@ -13,6 +13,8 @@ use Modules\Kelola\Entities\Konten;
 use Modules\RequestFile\Entities\Requestfile;
 use Modules\UnitKerja\Entities\UnitKerja;
 use Modules\User\Entities\User;
+
+use setasign\Fpdi\Fpdi;
 use Validator;
 
 class LandingController extends Controller
@@ -166,4 +168,54 @@ class LandingController extends Controller
             return redirect()->route('landing')->with(['error' => 'Username atau Password anda salah !!']);
         }
     }
+
+    public function landingdownload($id)
+    {
+        $file=FileArchive::find($id);
+        
+        $destination =storage_path('app/public/dokumen/'. $file->unitkerja_kode . '/' . $file->filetype_id . '/' . $file->filename);
+
+        $text = auth()->user()->username.' - '.auth()->user()->profile->nama;
+        $my_img = imagecreate( 320, 80 );                             //width & height
+        
+        $background  = imagecolorallocate( $my_img, 200,   79,   83 );
+        $text_colour = imagecolorallocate( $my_img, 200,   79,   83 );
+        // $line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
+        // imagestring( $my_img, 5, 20, 20, $text, $text_colour );
+        // imagesetthickness ( $my_img, 3 );
+        // imageline( $my_img, 30, 45, 165, 45, $line_colour );
+        
+        imagecolortransparent($my_img, $background);
+        imagestring($my_img, 5, 18, 18, $text, $text_colour);
+        $my_img=imagerotate($my_img, 50, 0);
+        
+        header( "Content-type: image/png" );
+        //Save image
+        
+        imagepng( $my_img,'custom.png');
+        
+        $pdf = new Fpdi();
+
+        
+        // set the source file
+        $c=$pdf->setSourceFile($destination);
+
+        for($x=1;$x<=$c;$x++)
+        {
+            // add a page
+            $pdf->AddPage();
+            // import page 1
+            $tplId = $pdf->importPage($x);
+            // use the imported page and place it at point 10,10 with a width of 100 mm
+            $pdf->useTemplate($tplId, 0, 0, 200);
+        
+            $pdf->Image('custom.png', 15, 15, 180, 270, 'png');
+        }
+
+
+        
+        $pdf->Output();            
+        // return view('landing');
+    }
+
 }

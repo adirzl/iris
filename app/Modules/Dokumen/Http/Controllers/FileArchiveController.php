@@ -11,6 +11,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Ajaxray\PHPWatermark\Watermark;
+use setasign\Fpdi\Fpdi;
+
 
 class FileArchiveController extends \App\Http\Controllers\Controller
 {
@@ -76,7 +79,6 @@ class FileArchiveController extends \App\Http\Controllers\Controller
             }
 
             $file->move(storage_path('app/'.$destination), $values['filename']);
-            $saveResult = true;
         });
 
         if ($saveResult) {

@@ -134,8 +134,14 @@
                                             <tr>
                                                 <td>
                                                     @if ($item->tipe_dokumen == 2 || ($item->last_requestfile->count() > 0 ? ($item->last_requestfile->first()->status == 2 ? true : false) : false))
+                                                        
+                                                        @if($item->fileext == 'pdf')
+                                                        <a href="{{ url('landingdownload',$item->id) }}"
+                                                            class="btn btn-success" target="_blank">Open</a>
+                                                        @else
                                                         <a href="{{ asset('storage/dokumen/' . $item->unitkerja_kode . '/' . $item->filetype_id . '/' . $item->filename) }}"
                                                             class="btn btn-success" target="_blank">Open</a>
+                                                        @endif
                                                     @else
                                                         @if (Auth::check())
                                                             <a href="{{ route('landingrequestfile', ['id' => $item->id]) }}"
